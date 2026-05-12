@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name>Design Upload for Products</name>
+  <code>design_upload</code>
+  <version>1.0.0</version>
+  <author>PromoBrand</author>
+  <link>https://promobrand.ro</link>
+
+  <!-- Add design_upload_code and design_observations to cart add -->
+  <file path="catalog/controller/checkout/cart.php">
+    <operation>
+      <search><![CDATA[$this->cart->add($this->request->post['product_id']]]></search>
+      <add position="before"><![CDATA[
+        // Save design upload data to session
+        if (isset($this->request->post['design_upload_code']) && $this->request->post['design_upload_code']) {
+          $this->session->data['design_uploads'][$this->request->post['product_id']] = array(
+            'design_code' => $this->request->post['design_upload_code'],
+            'observations' => isset($this->request->post['design_observations']) ? $this->request->post['design_observations'] : ''
+          );
+        }
+      ]]></add>
+    </operation>
+  </file>
+
+  <!-- Add design info to order confirmation -->
+  <file path="catalog/model/checkout/order.php">
+    <operation>
+      <search><![CDATA[public function addOrderHistory($order_id, $order_status_id]]></search>
+      <add position="before"><![CDATA[
+    public function saveDesignUpload($order_id, $product_id, $design_code, $observations) {
+      $this->db->query("INSERT INTO " . DB_PREFIX . "order_design_upload SET order_id = '" . (int)$order_id . "', product_id = '" . (int)$product_id . "', design_code = '" . $this->db->escape($design_code) . "', observations = '" . $this->db->escape($observations) . "', date_added = NOW()");
+    }
+      ]]></add>
+    </operation>
+  </file>
+</modification>

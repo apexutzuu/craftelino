@@ -1,0 +1,123 @@
+{{ header }}
+<div id="product-compare" class="container" style="padding:0 20px;">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">{{ heading_title }}</div>
+    </div>
+    {% if products %}
+    <div class="table-responsive" style="background:#fff;border-radius:10px;border:1.5px solid #e8e5df;overflow:hidden;">
+      <table class="table table-bordered" style="margin:0;">
+        <thead>
+          <tr>
+            <td style="background:#1a3a5c;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;"><strong>{{ text_product }}</strong></td>
+            {% for product in products %}
+            <td style="text-align:center;min-width:200px;">
+              <a href="{{ product.href }}">
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" style="max-width:120px;border-radius:8px;" />
+              </a>
+            </td>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_name }}</td>
+            {% for product in products %}
+            <td><a href="{{ product.href }}" style="color:#1a3a5c;font-weight:600;">{{ product.name }}</a></td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_price }}</td>
+            {% for product in products %}
+            <td>
+              {% if not product.special %}
+              <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#1a3a5c;">{{ product.price }}</span>
+              {% else %}
+              <span style="text-decoration:line-through;color:#aaa;">{{ product.price }}</span><br>
+              <span style="font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;color:#e8a020;">{{ product.special }}</span>
+              {% endif %}
+            </td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_model }}</td>
+            {% for product in products %}
+            <td>{{ product.model }}</td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_manufacturer }}</td>
+            {% for product in products %}
+            <td>{{ product.manufacturer }}</td>
+            {% endfor %}
+          </tr>
+          {% for attribute_group in attribute_groups %}
+          <tr>
+            <td colspan="{{ products|length + 1 }}" style="background:#f4f2ee;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:#1a3a5c;"><strong>{{ attribute_group.name }}</strong></td>
+          </tr>
+          {% for attribute in attribute_group.attribute %}
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ attribute.name }}</td>
+            {% for product_id in attribute.product %}
+            <td>{% if attribute.product[product_id] %} {{ attribute.product[product_id] }} {% endif %}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+          {% endfor %}
+          {% if review_status %}
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_rating }}</td>
+            {% for product in products %}
+            <td>
+              {% for j in 1..5 %}
+              {% if product.rating < j %}
+              <i class="ti ti-star" style="color:#ddd;font-size:14px;"></i>
+              {% else %}
+              <i class="ti ti-star-filled" style="color:#e8a020;font-size:14px;"></i>
+              {% endif %}
+              {% endfor %}
+              ({{ product.reviews }})
+            </td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_weight }}</td>
+            {% for product in products %}
+            <td>{{ product.weight }}</td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td style="font-weight:600;color:#1a3a5c;">{{ text_dimension }}</td>
+            {% for product in products %}
+            <td>{{ product.length }} x {{ product.width }} x {{ product.height }}</td>
+            {% endfor %}
+          </tr>
+          <tr>
+            <td></td>
+            {% for product in products %}
+            <td>
+              <button type="button" class="add-cart-btn" onclick="cart.add('{{ product.product_id }}');"><i class="ti ti-shopping-cart"></i> {{ button_cart }}</button>
+              <br><br>
+              <a onclick="compare.remove('{{ product.product_id }}');" style="color:#e74c3c;font-size:13px;cursor:pointer;"><i class="ti ti-trash"></i> {{ button_remove }}</a>
+            </td>
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div style="text-align:center;padding:40px;">
+      <i class="ti ti-arrows-exchange" style="font-size:60px;color:#ddd;display:block;margin-bottom:16px;"></i>
+      <p style="font-size:16px;color:#888;">{{ text_empty }}</p>
+      <a href="{{ continue }}" class="hero-cta" style="text-decoration:none;display:inline-flex;margin-top:16px;">{{ button_continue }}</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{{ footer }}

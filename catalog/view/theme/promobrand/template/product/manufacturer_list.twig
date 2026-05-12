@@ -1,0 +1,33 @@
+{{ header }}
+<div id="manufacturer-list" class="container" style="padding:0 20px;">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="section">
+    <div class="section-header">
+      <div class="section-title">{{ heading_title }}</div>
+    </div>
+    {{ content_top }}
+    {% if categories %}
+    {% for category in categories %}
+    {% if category.manufacturer %}
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:#1a3a5c;margin:16px 0 8px;">{{ category.name }}</h3>
+    <div class="brand-bar" style="flex-wrap:wrap;">
+      {% for manufacturer in category.manufacturer %}
+      <a href="{{ manufacturer.href }}" class="brand-chip">{{ manufacturer.name }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <div style="text-align:center;padding:40px;">
+      <p style="font-size:16px;color:#888;">{{ text_empty }}</p>
+      <a href="{{ continue }}" class="hero-cta" style="text-decoration:none;display:inline-flex;margin-top:16px;">{{ button_continue }}</a>
+    </div>
+    {% endif %}
+    {{ content_bottom }}
+  </div>
+</div>
+{{ footer }}

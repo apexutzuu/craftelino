@@ -1,0 +1,94 @@
+{{ header }}
+<div id="common-home">
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <div class="hero-main" style="background-image:url('image/promo/hero_banner.png');background-size:cover;background-position:center;">
+      <div class="hero-badge">⭐ Oferta lunii — produse promoționale</div>
+      <div class="hero-title">Brandează-ți<br>afacerea <span>cu stil</span></div>
+      <div class="hero-sub">Termosuri, agende, tricouri și pixuri personalizate cu logo-ul tău. Calitate premium, livrare rapidă.</div>
+      <a href="index.php?route=product/special" class="hero-cta" style="text-decoration:none;">Comandă acum <i class="ti ti-arrow-right"></i></a>
+      <div class="hero-countdown">
+        <div class="countdown-label">Ofertă expiră în</div>
+        <div class="countdown-digits">
+          <div class="cd-box"><div class="cd-num" id="cd-h">11</div><div class="cd-unit">ore</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-m">28</div><div class="cd-unit">min</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-s">44</div><div class="cd-unit">sec</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="side-banner side-banner-1" style="background-image:url('image/promo/promo_textile.png');background-size:cover;background-position:center;">
+        <div style="background:rgba(0,0,0,0.45);padding:20px;border-radius:12px;height:100%;display:flex;flex-direction:column;justify-content:center;">
+          <div class="sb-label">Textile brodate</div>
+          <div class="sb-title">Tricouri &amp; hanorace logo</div>
+          <div class="sb-discount">-40%</div>
+        </div>
+      </div>
+      <div class="side-banner side-banner-2" style="background-image:url('image/promo/promo_corporate_gift.png');background-size:cover;background-position:center;">
+        <div style="background:rgba(0,0,0,0.45);padding:20px;border-radius:12px;height:100%;display:flex;flex-direction:column;justify-content:center;">
+          <div class="sb-label">Set cadou corporate</div>
+          <div class="sb-title">Agendă + pix + termos</div>
+          <div class="sb-discount">-25%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promo Features Strip -->
+  <div class="promo-strip">
+    <div class="promo-item"><i class="ti ti-palette promo-icon"></i><div class="promo-text"><strong>Personalizare logo</strong><span>Print, broderie, gravură laser</span></div></div>
+    <div class="promo-item"><i class="ti ti-truck promo-icon"></i><div class="promo-text"><strong>Livrare rapidă</strong><span>5–7 zile lucrătoare</span></div></div>
+    <div class="promo-item"><i class="ti ti-building-store promo-icon"></i><div class="promo-text"><strong>Tarife B2B</strong><span>Prețuri speciale la volum</span></div></div>
+    <div class="promo-item"><i class="ti ti-eye promo-icon"></i><div class="promo-text"><strong>Machetă gratuită</strong><span>Previzualizare înainte de producție</span></div></div>
+  </div>
+
+  <!-- OpenCart Modules (Categories, Featured, etc.) -->
+  <div class="section">
+    {{ content_top }}
+  </div>
+
+  <div class="section">
+    {{ column_left }}
+    {{ content_bottom }}
+    {{ column_right }}
+  </div>
+
+  <!-- Brands Bar -->
+  <div class="section" style="padding-top:20px">
+    <div class="section-title" style="margin-bottom:14px">Branduri partenere</div>
+    <div class="brand-bar">
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Stanley</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Moleskine</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Parker</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Gildan</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">B&amp;C</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Kariban</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Halfar</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Impliva</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Result</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Roly</a>
+      <a href="index.php?route=product/manufacturer" class="brand-chip">Elevate</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Countdown Timer Script -->
+<script type="text/javascript">
+var promoSecs = 11*3600 + 28*60 + 44;
+var cdH = document.getElementById('cd-h');
+var cdM = document.getElementById('cd-m');
+var cdS = document.getElementById('cd-s');
+function promoPad(n) { return n < 10 ? '0' + n : '' + n; }
+function promoTick() {
+  if (promoSecs <= 0) return;
+  promoSecs--;
+  cdH.textContent = promoPad(Math.floor(promoSecs / 3600));
+  cdM.textContent = promoPad(Math.floor((promoSecs % 3600) / 60));
+  cdS.textContent = promoPad(promoSecs % 60);
+}
+setInterval(promoTick, 1000);
+</script>
+
+{{ footer }}

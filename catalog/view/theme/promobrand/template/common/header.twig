@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html dir="{{ direction }}" lang="{{ lang }}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{{ title }}</title>
+<base href="{{ base }}" />
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% endif %}
+{% if keywords %}
+<meta name="keywords" content="{{ keywords }}" />
+{% endif %}
+<script src="catalog/view/javascript/jquery/jquery-3.7.0.min.js" type="text/javascript"></script>
+<link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" type="text/css" />
+<link href="catalog/view/theme/promobrand/stylesheet/promobrand.css" rel="stylesheet">
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
+{% for link in links %}
+<link href="{{ link.href }}" rel="{{ link.rel }}" />
+{% endfor %}
+{% for analytic in analytics %}
+{{ analytic }}
+{% endfor %}
+</head>
+<body class="shop">
+
+<div class="topbar">
+  <span>🎁 Personalizare logo GRATUITĂ la comenzi peste 500 lei</span>
+  <div class="topbar-links">
+    <span><a href="{{ contact }}" style="color:#fff;text-decoration:none;">Cerere ofertă</a></span>
+    <span><a href="{{ account }}" style="color:#fff;text-decoration:none;">Cont firmă</a></span>
+  </div>
+</div>
+
+<div class="header">
+  <a href="{{ home }}" style="text-decoration:none;">
+    <div class="logo">CRAFT<span>ELINO</span></div>
+  </a>
+  <div class="search-bar">
+    <input type="text" name="search" value="" placeholder="Caută produse promoționale, branduri..." id="promo-search-input">
+    <button class="search-btn" id="promo-search-btn"><i class="ti ti-search"></i></button>
+  </div>
+  <div class="header-actions">
+    <a href="{{ contact }}" class="hbtn" style="text-decoration:none;"><i class="ti ti-building"></i><span>B2B</span></a>
+    <a href="{{ wishlist }}" class="hbtn" style="text-decoration:none;" id="wishlist-total"><i class="ti ti-heart"></i><span>Favorite</span></a>
+    <a href="{{ shopping_cart }}" class="hbtn cart-btn" style="text-decoration:none;"><i class="ti ti-shopping-cart"></i><span>Coș</span></a>
+    {% if logged %}
+    <a href="{{ account }}" class="hbtn" style="text-decoration:none;"><i class="ti ti-user"></i><span>{{ text_account }}</span></a>
+    {% else %}
+    <a href="{{ login }}" class="hbtn" style="text-decoration:none;"><i class="ti ti-user"></i><span>Cont</span></a>
+    {% endif %}
+  </div>
+</div>
+
+<nav class="nav-promo">
+  <div class="nav-all"><i class="ti ti-menu-2"></i> Toate produsele</div>
+  {% for category in categories %}
+  <a href="{{ category.href }}" class="nav-item{% if category.category_id == category_id %} active{% endif %}">{{ category.name }}</a>
+  {% endfor %}
+</nav>
+
+<script type="text/javascript">
+$('#promo-search-btn').on('click', function() {
+  var url = 'index.php?route=product/search';
+  var value = $('#promo-search-input').val();
+  if (value) {
+    url += '&search=' + encodeURIComponent(value);
+  }
+  location = url;
+});
+
+$('#promo-search-input').on('keydown', function(e) {
+  if (e.keyCode == 13) {
+    $('#promo-search-btn').trigger('click');
+  }
+});
+</script>

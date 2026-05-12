@@ -1,0 +1,53 @@
+<footer class="footer-promo">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">CRAFT<span>ELINO</span></div>
+      <div class="footer-desc">Producători și distribuitori de produse promoționale personalizate pentru firme din toată România. Calitate garantată, termene respectate.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Servicii</h4>
+      <ul>
+        <li>Personalizare logo</li>
+        <li>Broderie &amp; serigrafie</li>
+        <li>Gravură laser</li>
+        <li>Design machetă</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Cont</h4>
+      <ul>
+        <li><a href="{{ account }}">Contul meu</a></li>
+        <li><a href="{{ order }}">Comenzile mele</a></li>
+        <li><a href="{{ contact }}">Cerere ofertă B2B</a></li>
+        <li><a href="{{ special }}">Oferte speciale</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ajutor</h4>
+      <ul>
+        {% for information in informations %}
+        <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+        {% endfor %}
+        <li><a href="{{ contact }}">Contact</a></li>
+        <li><a href="{{ return }}">Retur &amp; garanție</a></li>
+        <li><a href="{{ sitemap }}">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; {{ "now"|date("Y") }} Craftelino &middot; Toate drepturile rezervate</span>
+    <div class="payment-icons">
+      <span class="pay-icon">VISA</span>
+      <span class="pay-icon">MC</span>
+      <span class="pay-icon">PayPal</span>
+      <span class="pay-icon">OP</span>
+    </div>
+  </div>
+</footer>
+{% for style in styles %}
+<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+{% endfor %}
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+</body></html>

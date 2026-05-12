@@ -1,0 +1,106 @@
+================================================================
+  PROMOBRAND - Ghid Rapid Deploy pe Gazduire Web
+================================================================
+
+PASUL 1: PREGATIRE BAZA DE DATE
+-------------------------------
+1. Logheaza-te in cPanel / Plesk pe hosting
+2. Creeaza o baza de date MySQL noua (ex: "promobrand")
+3. Creeaza un utilizator MySQL si da-i toate permisiunile pe baza de date
+4. Noteaza-ti: numele bazei, userul, parola
+
+PASUL 2: UPLOAD FISIERE
+------------------------
+1. Incarca TOATE fisierele din acest folder in public_html (sau subdirector)
+   - Poti folosi File Manager din cPanel sau un client FTP (FileZilla)
+   - Daca folosesti subdirector (ex: public_html/shop/), actualizeaza
+     RewriteBase in .htaccess (schimba "/" in "/shop/")
+
+PASUL 3: CONFIGURARE config.php
+--------------------------------
+Dupa upload, editeaza DOUA fisiere direct pe server:
+
+A) config.php (in radacina):
+   - HTTP_SERVER = 'https://craftelino.ro/' (DEJA SETAT)
+   - DIR_APPLICATION = '/home/USERUL_TAU/public_html/catalog/'
+   - DIR_SYSTEM = '/home/USERUL_TAU/public_html/system/'
+   - DIR_IMAGE = '/home/USERUL_TAU/public_html/image/'
+   - DB_USERNAME = userul MySQL creat la pasul 1
+   - DB_PASSWORD = parola MySQL
+   - DB_DATABASE = numele bazei de date
+   
+   SFAT: Calea absoluta o afli din cPanel > File Manager, sau ruleaza 
+   in PHP: echo __DIR__;
+
+B) admin/config.php:
+   - HTTP_SERVER = 'https://craftelino.ro/admin/' (DEJA SETAT)
+   - DIR_APPLICATION = '/home/USERUL_TAU/public_html/admin/'
+
+PASUL 4: INSTALARE OPENCART
+-----------------------------
+1. Deschide in browser: https://domeniultau.ro/
+2. Vei fi redirectat automat la pagina de instalare
+3. Urmeaza wizard-ul:
+   - Accepta licenta
+   - Pre-Installation: toate trebuie sa fie verzi (OK)
+   - Configuration: introdu datele bazei de date (de la Pasul 1)
+   - Admin: alege username si parola pentru panoul de administrare
+4. Click "Install"
+
+PASUL 5: STERGE FOLDERUL install/
+----------------------------------
+IMPORTANT! Dupa instalare, STERGE folderul /install/ de pe server!
+- Din File Manager sau FTP, sterge folderul "install"
+- OpenCart nu va functiona pana nu il stergi
+
+PASUL 6: ACTIVARE TEMA PROMOBRAND
+-----------------------------------
+1. Logheaza-te in Admin: https://domeniultau.ro/admin/
+2. Mergi la System > Settings > Edit (iconita creion)
+3. Tab-ul "General" (sau "Option" la unele versiuni)
+4. Campul "Theme" > selecteaza "promobrand"
+5. Click "Save" (iconita discheta sus-dreapta)
+
+PASUL 7: CONFIGURARE DESIGN UPLOAD
+------------------------------------
+1. In phpMyAdmin, importa fisierul: system/design_upload_install.sql
+2. In Admin > Extensions > Installer > Upload: design_upload.ocmod.xml
+3. Mergi la Extensions > Modifications > Click "Refresh" (butonul albastru)
+4. Mergi la Extensions > Modules > "Design Upload" > Install > Edit > Status: Enabled
+
+PASUL 8: CONFIGURARE MAGAZIN
+------------------------------
+1. Admin > Catalog > Categories: Adauga categorii:
+   - Termosuri & Cani
+   - Agende & Carnete
+   - Tricouri & Textile
+   - Pixuri & Instrumente
+   - Genti & Rucsacuri
+   - Seturi cadou
+   - Umbrele & Accesorii
+
+2. Admin > Catalog > Manufacturers: Adauga branduri
+3. Admin > Catalog > Products: Adauga produse cu imagini
+4. Admin > System > Settings > Edit > Store tab:
+   - Store Name: PromoBrand
+   - Meta Title: Produse promotionale personalizate - PromoBrand
+
+PERMISIUNI NECESARE (chmod)
+----------------------------
+Daca apar erori, verifica permisiunile:
+  system/storage/cache/     - chmod 777
+  system/storage/logs/      - chmod 777
+  system/storage/download/  - chmod 777
+  system/storage/upload/    - chmod 777
+  system/storage/session/   - chmod 777
+  system/storage/modification/ - chmod 777
+  image/                    - chmod 777
+  image/cache/              - chmod 777
+  image/catalog/            - chmod 777
+
+SUPORT
+-------
+- Documentatie OpenCart: https://docs.opencart.com/
+- Forum OpenCart: https://forum.opencart.com/
+
+================================================================

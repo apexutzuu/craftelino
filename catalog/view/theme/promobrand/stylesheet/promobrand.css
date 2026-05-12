@@ -1,0 +1,1369 @@
+/* ==========================================================================
+   PromoBrand Theme — OpenCart Stylesheet
+   Romanian Promotional Products Store
+   ========================================================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&display=swap');
+
+/* Tabler Icons */
+@import url('https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css');
+
+/* ==========================================================================
+   Color Palette
+   ---------------------------------------------------------------------------
+   Primary dark blue:   #1a3a5c
+   Accent gold/amber:   #e8a020
+   Background warm gray: #f4f2ee
+   Border light:        #e8e5df
+   Text dark:           #1a1a1a
+   Text light blue:     #8aaac4
+   Green:               #2c5f2e
+   Purple:              #6b2d6b
+   Highlight yellow:    #f5c842
+   ========================================================================== */
+
+/* ==========================================================================
+   1. Reset & Base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: #f4f2ee;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+.shop {
+  font-family: 'Barlow', sans-serif;
+  background: #f4f2ee;
+  color: #1a1a1a;
+}
+
+/* ==========================================================================
+   2. OpenCart Default Overrides
+   ========================================================================== */
+
+#top {
+  display: none;
+}
+
+header {
+  display: none;
+}
+
+#menu {
+  display: none;
+}
+
+footer {
+  display: none;
+}
+
+.breadcrumb {
+  background: #f4f2ee;
+  border-radius: 0;
+  margin: 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #e8e5df;
+}
+
+.breadcrumb > li + li:before {
+  color: #aaa;
+}
+
+.breadcrumb a {
+  color: #1a3a5c;
+}
+
+.btn-primary {
+  background: #1a3a5c;
+  border-color: #1a3a5c;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #e8a020;
+  border-color: #e8a020;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+#product-product .container {
+  padding: 0 20px;
+}
+
+#product-category .container {
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   3. Top Bar
+   ========================================================================== */
+
+.topbar {
+  background: #1a3a5c;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.topbar-links {
+  display: flex;
+  gap: 20px;
+}
+
+.topbar-links span {
+  opacity: .85;
+  cursor: pointer;
+}
+
+.topbar-links span:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   4. Header
+   ========================================================================== */
+
+.header {
+  background: #fff;
+  border-bottom: 2px solid #e8e5df;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a3a5c;
+  letter-spacing: -1px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.logo span {
+  color: #e8a020;
+}
+
+/* ==========================================================================
+   5. Search Bar
+   ========================================================================== */
+
+.search-bar {
+  flex: 1;
+  display: flex;
+  max-width: 520px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: 2px solid #ddd;
+  border-right: none;
+  padding: 10px 16px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  background: #fafafa;
+}
+
+.search-bar input:focus {
+  border-color: #1a3a5c;
+  background: #fff;
+}
+
+.search-btn {
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 0 6px 6px 0;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.search-btn:hover {
+  background: #122a42;
+}
+
+/* ==========================================================================
+   6. Header Actions
+   ========================================================================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.hbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: 'Barlow', sans-serif;
+  font-size: 11px;
+  color: #555;
+  font-weight: 500;
+  transition: background .15s;
+}
+
+.hbtn:hover {
+  background: #f4f2ee;
+}
+
+.hbtn i {
+  font-size: 22px;
+  color: #1a1a1a;
+}
+
+.cart-btn {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  background: #e8a020;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   7. Navigation
+   ========================================================================== */
+
+.nav-promo {
+  background: #1a3a5c;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 0;
+}
+
+.nav-all {
+  background: #e8a020;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-all:hover {
+  background: #c98a15;
+}
+
+.nav-item {
+  color: #c8d8e8;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .15s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-item:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-item.hot {
+  color: #f5c842;
+}
+
+.nav-item.hot:hover {
+  color: #ffd966;
+}
+
+/* ==========================================================================
+   8. Hero Section
+   ========================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 12px;
+  padding: 16px 20px 0;
+}
+
+.hero-main {
+  background: #1a3a5c;
+  border-radius: 10px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 280px;
+}
+
+.hero-main::before {
+  content: '';
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(232, 160, 32, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: #e8a020;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.hero-title span {
+  color: #e8a020;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: #8aaac4;
+  margin-bottom: 24px;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e8a020;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 12px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  transition: background .15s;
+}
+
+.hero-cta:hover {
+  background: #c98a15;
+}
+
+/* Countdown */
+.hero-countdown {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.countdown-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e8a020;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-bottom: 10px;
+}
+
+.countdown-digits {
+  display: flex;
+  gap: 8px;
+}
+
+.cd-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 10px 12px;
+  text-align: center;
+  min-width: 52px;
+}
+
+.cd-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.cd-unit {
+  font-size: 10px;
+  color: #8aaac4;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* ==========================================================================
+   9. Hero Side Banners
+   ========================================================================== */
+
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.side-banner {
+  border-radius: 10px;
+  padding: 24px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.side-banner-1 {
+  background: #2c5f2e;
+}
+
+.side-banner-2 {
+  background: #6b2d6b;
+}
+
+.sb-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+}
+
+.sb-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.sb-discount {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #f5c842;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   10. Section Headers
+   ========================================================================== */
+
+.section {
+  padding: 24px 20px 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: #e8a020;
+  border-radius: 2px;
+}
+
+.see-all {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a3a5c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  font-family: 'Barlow', sans-serif;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   11. Category Grid
+   ========================================================================== */
+
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.cat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1.5px solid #e8e5df;
+  transition: border-color .15s, transform .15s;
+}
+
+.cat-card:hover {
+  border-color: #e8a020;
+  transform: translateY(-2px);
+}
+
+.cat-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+  display: block;
+  color: #1a3a5c;
+}
+
+.cat-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+/* ==========================================================================
+   12. Product Grid & Cards
+   ========================================================================== */
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.prod-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1.5px solid #e8e5df;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color .15s, transform .15s;
+  position: relative;
+}
+
+.prod-card:hover {
+  border-color: #e8a020;
+  transform: translateY(-3px);
+}
+
+.prod-img {
+  background: #f8f6f2;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  position: relative;
+}
+
+.prod-discount-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e8a020;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.new-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #1a3a5c;
+  color: #fff;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #aaa;
+  transition: color .15s, border-color .15s;
+}
+
+.wishlist-btn:hover {
+  color: #e8a020;
+  border-color: #e8a020;
+}
+
+.prod-body {
+  padding: 12px;
+}
+
+.prod-brand {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a3a5c;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 4px;
+}
+
+.prod-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.prod-prices {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.prod-price-new {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a3a5c;
+}
+
+.prod-price-old {
+  font-size: 13px;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.add-cart-btn {
+  width: 100%;
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 9px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background .15s;
+}
+
+.add-cart-btn:hover {
+  background: #e8a020;
+}
+
+/* ==========================================================================
+   13. Promo Strip
+   ========================================================================== */
+
+.promo-strip {
+  background: #fff;
+  border-top: 2px solid #e8e5df;
+  border-bottom: 2px solid #e8e5df;
+  margin: 24px 0 0;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.promo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+}
+
+.promo-icon {
+  font-size: 28px;
+  color: #e8a020;
+  flex-shrink: 0;
+}
+
+.promo-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.promo-text span {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ==========================================================================
+   14. Brand Bar
+   ========================================================================== */
+
+.brand-bar {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.brand-chip {
+  flex-shrink: 0;
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color .15s, color .15s;
+  text-decoration: none;
+}
+
+.brand-chip:hover {
+  border-color: #e8a020;
+  color: #1a3a5c;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   15. Footer
+   ========================================================================== */
+
+.footer-promo {
+  background: #1a3a5c;
+  color: #8aaac4;
+  padding: 28px 20px 20px;
+  margin-top: 28px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.footer-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-logo span {
+  color: #e8a020;
+}
+
+.footer-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #7090a8;
+}
+
+.footer-col h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 12px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  font-size: 13px;
+  color: #7090a8;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+
+.footer-col li:hover {
+  color: #fff;
+}
+
+.footer-col li a {
+  color: #7090a8;
+  text-decoration: none;
+}
+
+.footer-col li a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #244f72;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #4a6e88;
+}
+
+.payment-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.pay-icon {
+  background: #122a42;
+  border: 1px solid #2a4f6e;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7090a8;
+}
+
+/* ==========================================================================
+   16. Design Upload Section (Product Page)
+   ========================================================================== */
+
+.design-upload-section {
+  background: #fff;
+  border: 2px dashed #e8a020;
+  border-radius: 10px;
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.design-upload-section h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a3a5c;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.design-upload-section h3 i {
+  color: #e8a020;
+  font-size: 24px;
+}
+
+.design-upload-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: #fafaf8;
+}
+
+.design-upload-area:hover {
+  border-color: #e8a020;
+  background: #fff8ee;
+}
+
+.design-upload-area i {
+  font-size: 40px;
+  color: #1a3a5c;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.design-upload-area p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.design-upload-area .upload-hint {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 6px;
+}
+
+.design-upload-area.has-file {
+  border-color: #2c5f2e;
+  background: #f0f8f0;
+}
+
+.design-upload-area.has-file i {
+  color: #2c5f2e;
+}
+
+.design-preview {
+  margin-top: 12px;
+}
+
+.design-preview img {
+  max-width: 200px;
+  border-radius: 8px;
+  border: 2px solid #e8e5df;
+}
+
+.design-preview .file-name {
+  font-size: 13px;
+  color: #1a3a5c;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.design-preview .remove-file {
+  color: #e74c3c;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.design-observations {
+  margin-top: 16px;
+}
+
+.design-observations label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a3a5c;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.design-observations textarea {
+  width: 100%;
+  border: 2px solid #e8e5df;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.design-observations textarea:focus {
+  border-color: #1a3a5c;
+}
+
+.design-observations .obs-hint {
+  font-size: 12px;
+  color: #888;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   17. Product Page — PromoBrand Layout
+   ========================================================================== */
+
+.product-info-promo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.product-gallery {
+  background: #f8f6f2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.product-gallery .main-image {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-gallery .main-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-gallery .thumb-list {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+}
+
+.product-gallery .thumb-list img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #e8e5df;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.product-gallery .thumb-list img:hover,
+.product-gallery .thumb-list img.active {
+  border-color: #e8a020;
+}
+
+.product-details-promo h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.product-meta {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 16px;
+}
+
+.product-meta span {
+  margin-right: 16px;
+}
+
+.product-meta a {
+  color: #1a3a5c;
+  font-weight: 600;
+}
+
+.product-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #f4f2ee;
+  border-radius: 8px;
+}
+
+.product-price-box .price-current {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a3a5c;
+}
+
+.product-price-box .price-old {
+  font-size: 18px;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.product-price-box .price-save {
+  font-size: 14px;
+  color: #e8a020;
+  font-weight: 700;
+}
+
+.product-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.product-qty-row label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a3a5c;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e8e5df;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.qty-control button {
+  background: #f4f2ee;
+  border: none;
+  padding: 8px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #1a3a5c;
+}
+
+.qty-control button:hover {
+  background: #e8e5df;
+}
+
+.qty-control input {
+  width: 50px;
+  text-align: center;
+  border: none;
+  border-left: 2px solid #e8e5df;
+  border-right: 2px solid #e8e5df;
+  padding: 8px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+}
+
+.btn-add-cart-big {
+  width: 100%;
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s;
+  margin-bottom: 12px;
+}
+
+.btn-add-cart-big:hover {
+  background: #e8a020;
+}
+
+.btn-wishlist-big {
+  width: 100%;
+  background: transparent;
+  color: #1a3a5c;
+  border: 2px solid #e8e5df;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s;
+}
+
+.btn-wishlist-big:hover {
+  border-color: #e8a020;
+  color: #e8a020;
+}
+
+/* ==========================================================================
+   18. Category Page Grid Override
+   ========================================================================== */
+
+.category-promo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ==========================================================================
+   19. Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .prod-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cat-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-countdown {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+  }
+
+  .prod-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-info-promo {
+    grid-template-columns: 1fr;
+  }
+
+  .category-promo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .promo-strip {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .search-bar {
+    order: 3;
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-promo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-main {
+    padding: 24px;
+  }
+}
