@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 56" role="img" aria-labelledby="t">
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="56" viewBox="0 0 320 56" role="img" aria-labelledby="t">
   <title id="t">Craftelino</title>
-  <rect width="320" height="56" rx="0" fill="#1a3a5c"/>
-  <text x="160" y="38" text-anchor="middle" font-family="Barlow Condensed, Segoe UI Condensed, Arial Narrow, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1">
+  <rect width="320" height="56" fill="#1a3a5c"/>
+  <text x="160" y="38" text-anchor="middle" font-family="Arial Narrow, Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="1">
     <tspan fill="#ffffff">CRAFT</tspan><tspan fill="#e8a020">ELINO</tspan>
   </text>
 </svg>

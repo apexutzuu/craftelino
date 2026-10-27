@@ -64,11 +64,14 @@
   <div class="craft-header">
     <div class="container">
       <div id="logo" class="craft-logo">
-        {% if logo %}
-          <a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}"/></a>
-        {% else %}
-          <a href="{{ home }}">CRAFT<span>ELINO</span></a>
-        {% endif %}
+        <a href="{{ home }}" class="craft-logo-link" title="{{ name }}">
+          {% if logo %}
+            <img src="{{ logo }}" alt="{{ name }}" width="200" height="40" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
+            <span class="craft-logo-text" style="display:none">CRAFT<span>ELINO</span></span>
+          {% else %}
+            <span class="craft-logo-text">CRAFT<span>ELINO</span></span>
+          {% endif %}
+        </a>
       </div>
       <div class="craft-search-wrap">{{ search }}</div>
       <div class="craft-header-actions">

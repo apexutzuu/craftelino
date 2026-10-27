@@ -64,10 +64,45 @@
     }
   }
 
+  function initCookieBar() {
+    var bar = document.getElementById("craft-cookie-bar");
+    if (!bar) {
+      return;
+    }
+    bar.querySelectorAll("[data-craft-cookie-url]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var url = btn.getAttribute("data-craft-cookie-url");
+        if (!url) {
+          return;
+        }
+        btn.disabled = true;
+        fetch(url, { credentials: "same-origin", headers: { "X-Requested-With": "XMLHttpRequest" } })
+          .then(function (r) {
+            return r.json().catch(function () {
+              return {};
+            });
+          })
+          .then(function () {
+            bar.classList.add("craft-cookie-bar--hidden");
+            setTimeout(function () {
+              if (bar.parentNode) {
+                bar.parentNode.removeChild(bar);
+              }
+            }, 320);
+          })
+          .catch(function () {
+            bar.classList.add("craft-cookie-bar--hidden");
+            btn.disabled = false;
+          });
+      });
+    });
+  }
+
   function boot() {
     initCountdown();
     setSpecialLinks();
     initNavDropdown();
+    initCookieBar();
   }
 
   if (document.readyState === "loading") {
