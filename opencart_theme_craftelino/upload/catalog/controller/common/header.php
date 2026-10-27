@@ -66,6 +66,16 @@ class Header extends \Opencart\System\Engine\Controller {
 		$logo_file = $this->config->get('config_logo') ? html_entity_decode((string)$this->config->get('config_logo'), ENT_QUOTES, 'UTF-8') : '';
 		$data['logo'] = '';
 
+		// Prefer store logo; fall back to Craftelino brand assets in image/catalog/
+		if (!$logo_file || !is_file(DIR_IMAGE . $logo_file)) {
+			foreach (['catalog/craftelino-logo.png', 'catalog/craftelino-logo.svg'] as $fallback) {
+				if (is_file(DIR_IMAGE . $fallback)) {
+					$logo_file = $fallback;
+					break;
+				}
+			}
+		}
+
 		if ($logo_file && is_file(DIR_IMAGE . $logo_file)) {
 			$extension = strtolower(pathinfo($logo_file, PATHINFO_EXTENSION));
 
@@ -74,7 +84,7 @@ class Header extends \Opencart\System\Engine\Controller {
 			} else {
 				$w = (int)$this->config->get('config_image_default_width');
 				$h = (int)$this->config->get('config_image_default_height');
-				$resized = $this->model_tool_image->resize($logo_file, $w > 0 ? $w : 200, $h > 0 ? $h : 80, '');
+				$resized = $this->model_tool_image->resize($logo_file, $w > 0 ? $w : 200, $h > 0 ? $h : 56, '');
 
 				$data['logo'] = $resized ?: ($this->config->get('config_url') . 'image/' . str_replace(' ', '%20', $logo_file));
 			}

@@ -137,8 +137,10 @@ body.craftelino-shop .craft-hbtn:focus-visible {
 }
 
 .craft-logo img {
-  max-height: 48px;
+  display: block;
+  max-height: 52px;
   width: auto;
+  height: auto;
 }
 
 .craft-search-wrap {
