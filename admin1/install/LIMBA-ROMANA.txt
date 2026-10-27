@@ -1,0 +1,30 @@
+LIMBA ROMÂNĂ — Craftelino / OpenCart 4
+======================================
+
+1. ÎNCARCĂ PE SERVER
+   - Întreg folderul: catalog/language/ro-ro/
+   - Fișierele temei actualizate (header.twig, etc.)
+
+2. ADAUGĂ LIMBA ÎN BAZA DE DATE
+   - Rulează install/ro-ro-language.sql în phpMyAdmin
+   - Sau în Admin: System → Localisation → Languages → Add
+     * Name: Română
+     * Code: ro-ro
+     * Locale: ro-RO
+     * Status: Enabled
+
+3. SETEAZĂ ROMÂNA CA IMPLICIT
+   - System → Settings → Store → tab Local
+   - Language: Română (ro-ro)
+   - Salvează
+
+4. CACHE
+   - Dashboard → albastru (șterge cache modificări)
+   - În browser: Ctrl+F5
+
+5. PRODUSE / CATEGORII
+   - Textele din admin (descrieri produse) se traduc separat:
+     Catalog → Products → fiecare produs → tab Data → Language Română
+
+Notă: Homepage-ul Craftelino (home.twig) este deja în română.
+Footer-ul legal (TOP UNDERGROUND GOODS SRL) este deja în română.

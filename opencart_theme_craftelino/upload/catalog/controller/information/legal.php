@@ -5,11 +5,17 @@ namespace Opencart\Catalog\Controller\Information;
  */
 class Legal extends \Opencart\System\Engine\Controller {
 	public static function company(): array {
+		if (is_file(DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php')) {
+			require_once DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php';
+
+			return \Opencart\System\Library\Craft\LegalContent::company();
+		}
+
 		return [
 			'name'               => 'TOP UNDERGROUND GOODS SRL',
 			'cui'                => '50982610',
 			'reg'                => 'J2024046408004',
-			'address'            => 'Str. Verzisori 6, Bl. D, Ap. B118',
+			'address'            => 'Str. Serg. Ion Nuțu nr. 8-10, Sector 5, București',
 			'procurement_email'  => 'procurement@craftelino.ro',
 		];
 	}
@@ -25,20 +31,36 @@ class Legal extends \Opencart\System\Engine\Controller {
 		return [
 			[
 				'title' => 'Termeni și condiții',
-				'href'  => $link('information/legal/terms', $args),
+				'href'  => $link('information/legal.terms', $args),
 			],
 			[
 				'title' => 'Informații livrare',
-				'href'  => $link('information/legal/delivery', $args),
+				'href'  => $link('information/legal.delivery', $args),
 			],
 			[
 				'title' => 'Politica de confidențialitate',
-				'href'  => $link('information/legal/privacy', $args),
+				'href'  => $link('information/legal.privacy', $args),
 			],
 		];
 	}
 
+	public function index(): void {
+		$this->terms();
+	}
+
 	public function terms(): void {
+		if (is_file(DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php')) {
+			require_once DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php';
+			$pages = \Opencart\System\Library\Craft\LegalContent::pages(
+				(string)$this->config->get('config_name'),
+				(string)$this->config->get('config_email'),
+				(string)$this->config->get('config_telephone')
+			);
+			$this->renderPage($pages['terms']['title'], $pages['terms']['description']);
+
+			return;
+		}
+
 		$c = self::company();
 		$store = $this->config->get('config_name');
 
@@ -49,8 +71,7 @@ class Legal extends \Opencart\System\Engine\Controller {
 			. '<li><strong>CUI:</strong> ' . htmlspecialchars((string)$c['cui'], ENT_QUOTES, 'UTF-8') . '</li>'
 			. '<li><strong>Nr. Reg. Comerțului:</strong> ' . htmlspecialchars($c['reg'], ENT_QUOTES, 'UTF-8') . '</li>'
 			. '<li><strong>Sediu:</strong> ' . htmlspecialchars($c['address'], ENT_QUOTES, 'UTF-8') . '</li>'
-			. '<li><strong>E-mail achiziții / oferte:</strong> <a href="mailto:' . htmlspecialchars($c['procurement_email'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($c['procurement_email'], ENT_QUOTES, 'UTF-8') . '</a></li>'
-			. ($this->config->get('config_email') ? '<li><strong>E-mail general:</strong> ' . htmlspecialchars($this->config->get('config_email'), ENT_QUOTES, 'UTF-8') . '</li>' : '')
+			. '<li><strong>E-mail:</strong> <a href="mailto:' . htmlspecialchars($c['procurement_email'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($c['procurement_email'], ENT_QUOTES, 'UTF-8') . '</a></li>'
 			. '</ul>'
 			. '<h2>2. Produse și personalizare</h2>'
 			. '<p>Produsele pot fi personalizate (print, broderie, gravură etc.) conform specificațiilor confirmate de client. Culorile afișate pe ecran pot varia ușor față de produsul final.</p>'
@@ -59,13 +80,13 @@ class Legal extends \Opencart\System\Engine\Controller {
 			. '<h2>4. Prețuri și plată</h2>'
 			. '<p>Prețurile sunt exprimate în moneda afișată pe site și pot include sau exclude TVA, conform mențiunilor de pe pagina produsului. Metodele de plată disponibile sunt cele afișate la finalizarea comenzii.</p>'
 			. '<h2>5. Livrare</h2>'
-			. '<p>Termenele de livrare sunt orientative (de regulă 5–7 zile lucrătoare după confirmarea comenzii și a graficii). Detalii suplimentare în pagina <a href="' . htmlspecialchars($this->url->link('information/legal/delivery', 'language=' . $this->config->get('config_language')), ENT_QUOTES, 'UTF-8') . '">Informații livrare</a>.</p>'
+			. '<p>Termenele de livrare sunt orientative (de regulă 5–7 zile lucrătoare după confirmarea comenzii și a graficii). Detalii suplimentare în pagina <a href="' . htmlspecialchars($this->url->link('information/legal.delivery', 'language=' . $this->config->get('config_language')), ENT_QUOTES, 'UTF-8') . '">Informații livrare</a>.</p>'
 			. '<h2>6. Dreptul de retragere</h2>'
 			. '<p>Consumatorii beneficiază de dreptul de retragere în 14 zile calendaristice pentru produse nepersonalizate, conform legislației aplicabile. Produsele realizate la comandă sau personalizate conform specificațiilor clientului pot fi exceptate de la retragere, conform art. 16 lit. c) din OUG 34/2014.</p>'
 			. '<h2>7. Garanție și reclamații</h2>'
 			. '<p>Reclamațiile privind defecte sau neconformități se transmit în termen de 48 de ore de la recepție, pe e-mail sau telefon, cu dovezi foto. Vom remedia sau înlocui produsele defecte în limita posibilităților tehnice.</p>'
 			. '<h2>8. Protecția datelor</h2>'
-			. '<p>Prelucrarea datelor cu caracter personal se face conform <a href="' . htmlspecialchars($this->url->link('information/legal/privacy', 'language=' . $this->config->get('config_language')), ENT_QUOTES, 'UTF-8') . '">Politicii de confidențialitate</a>.</p>'
+			. '<p>Prelucrarea datelor cu caracter personal se face conform <a href="' . htmlspecialchars($this->url->link('information/legal.privacy', 'language=' . $this->config->get('config_language')), ENT_QUOTES, 'UTF-8') . '">Politicii de confidențialitate</a>.</p>'
 			. '<h2>9. Legea aplicabilă</h2>'
 			. '<p>Prezentul contract este guvernat de legea română. Litigiile se soluționează pe cale amiabilă sau de instanțele competente din România.</p>';
 
@@ -73,6 +94,18 @@ class Legal extends \Opencart\System\Engine\Controller {
 	}
 
 	public function delivery(): void {
+		if (is_file(DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php')) {
+			require_once DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php';
+			$pages = \Opencart\System\Library\Craft\LegalContent::pages(
+				(string)$this->config->get('config_name'),
+				(string)$this->config->get('config_email'),
+				(string)$this->config->get('config_telephone')
+			);
+			$this->renderPage($pages['delivery']['title'], $pages['delivery']['description']);
+
+			return;
+		}
+
 		$html = '<p>Livrăm în România prin curier rapid sau transport agreat pentru comenzi mari.</p>'
 			. '<h2>Termene</h2>'
 			. '<ul>'
@@ -89,6 +122,18 @@ class Legal extends \Opencart\System\Engine\Controller {
 	}
 
 	public function privacy(): void {
+		if (is_file(DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php')) {
+			require_once DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php';
+			$pages = \Opencart\System\Library\Craft\LegalContent::pages(
+				(string)$this->config->get('config_name'),
+				(string)$this->config->get('config_email'),
+				(string)$this->config->get('config_telephone')
+			);
+			$this->renderPage($pages['privacy']['title'], $pages['privacy']['description']);
+
+			return;
+		}
+
 		$c = self::company();
 
 		$html = '<p>Operatorul datelor cu caracter personal este <strong>' . htmlspecialchars($c['name'], ENT_QUOTES, 'UTF-8') . '</strong>, CUI ' . htmlspecialchars((string)$c['cui'], ENT_QUOTES, 'UTF-8') . ', cu sediul în ' . htmlspecialchars($c['address'], ENT_QUOTES, 'UTF-8') . '.</p>'
@@ -106,7 +151,7 @@ class Legal extends \Opencart\System\Engine\Controller {
 			. '<h2>Durata stocării</h2>'
 			. '<p>Păstrăm datele pe perioada necesară îndeplinirii scopurilor și conform termenelor legale de arhivare.</p>'
 			. '<h2>Drepturile persoanelor vizate</h2>'
-			. '<p>Aveți dreptul de acces, rectificare, ștergere, restricționare, portabilitate și opoziție, precum și dreptul de a depune plângere la ANSPDCP. Solicitările se trimit la <a href="mailto:' . htmlspecialchars($c['procurement_email'], ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($c['procurement_email'], ENT_QUOTES, 'UTF-8') . '</a>.</p>'
+			. '<p>Aveți dreptul de acces, rectificare, ștergere, restricționare, portabilitate și opoziție, precum și dreptul de a depune plângere la ANSPDCP. Solicitările se trimit la datele de contact de pe site.</p>'
 			. '<h2>Securitate</h2>'
 			. '<p>Aplicăm măsuri tehnice și organizatorice rezonabile pentru protejarea datelor împotriva accesului neautorizat.</p>';
 

@@ -14,10 +14,7 @@
           <p>Reg. com.: {{ company.reg }}</p>
           <p>{{ company.address }}</p>
           {% if procurement_email is defined and procurement_email %}
-            <p><a href="mailto:{{ procurement_email }}">{{ procurement_email }}</a> <span class="text-muted">(oferte B2B)</span></p>
-          {% endif %}
-          {% if config_email is defined and config_email %}
-            <p><a href="mailto:{{ config_email }}">{{ config_email }}</a></p>
+            <p><a href="mailto:{{ procurement_email }}">{{ procurement_email }}</a></p>
           {% endif %}
         </div>
         <ul class="craft-footer-services">

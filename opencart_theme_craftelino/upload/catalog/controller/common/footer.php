@@ -35,8 +35,7 @@ class Footer extends \Opencart\System\Engine\Controller {
 		);
 
 		$data['company'] = \Opencart\Catalog\Controller\Information\Legal::company();
-		$data['procurement_email'] = $data['company']['procurement_email'];
-		$data['config_email'] = $this->config->get('config_email');
+		$data['procurement_email'] = $data['company']['procurement_email'] ?? 'procurement@craftelino.ro';
 
 		$data['footer_services'] = [
 			'Personalizare logo',
@@ -92,7 +91,11 @@ class Footer extends \Opencart\System\Engine\Controller {
 
 		$data['bootstrap'] = 'catalog/view/javascript/bootstrap/js/bootstrap.bundle.min.js';
 		$data['scripts'] = $this->document->getScripts('footer');
-		$data['cookie'] = $this->load->controller('common/cookie');
+		if ($this->config->get('module_cookie_consent_status')) {
+			$data['cookie'] = $this->load->controller('extension/craftelino/module/cookie_consent');
+		} else {
+			$data['cookie'] = $this->load->controller('common/cookie');
+		}
 
 		return $this->load->view('common/footer', $data);
 	}
