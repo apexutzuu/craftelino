@@ -1,0 +1,115 @@
+{{ header }}
+<div id="information-quote" class="container craft-quote-page">
+  <nav aria-label="breadcrumb">
+    <ul class="breadcrumb">
+      {% for breadcrumb in breadcrumbs %}
+        <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">
+      {{ content_top }}
+      <h1 class="craft-quote-title">{{ heading_title }}</h1>
+      <p class="craft-quote-intro">{{ text_intro }}</p>
+
+      {% if product_name %}
+        <div class="craft-quote-product alert alert-light border">
+          <strong>{{ entry_product|default('Produs') }}:</strong>
+          {% if product_href %}<a href="{{ product_href }}">{{ product_name }}</a>{% else %}{{ product_name }}{% endif %}
+          {% if product_model %}<span class="text-muted"> · {{ product_model }}</span>{% endif %}
+        </div>
+      {% endif %}
+
+      <form id="form-quote" class="craft-quote-form" enctype="multipart/form-data" action="{{ send }}" method="post">
+        <input type="hidden" name="product_id" value="{{ product_id }}"/>
+        <input type="hidden" name="product_name" value="{{ product_name }}"/>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="input-quote-name">{{ entry_name|default('Nume') }}</label>
+            <input type="text" name="name" value="{{ name }}" id="input-quote-name" class="form-control" required/>
+            <div id="error-name" class="invalid-feedback"></div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="input-quote-email">{{ entry_email|default('E-mail') }}</label>
+            <input type="email" name="email" value="{{ email }}" id="input-quote-email" class="form-control" required/>
+            <div id="error-email" class="invalid-feedback"></div>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="input-quote-company">{{ entry_company|default('Firmă') }}</label>
+            <input type="text" name="company_name" value="{{ company_name }}" id="input-quote-company" class="form-control"/>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="input-quote-tel">{{ entry_telephone|default('Telefon') }}</label>
+            <input type="text" name="telephone" value="" id="input-quote-tel" class="form-control"/>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="input-quote-qty">{{ entry_quantity|default('Cantitate') }}</label>
+            <input type="number" name="quantity" value="{{ quantity }}" min="1" id="input-quote-qty" class="form-control" required/>
+            <div id="error-quantity" class="invalid-feedback"></div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="input-quote-deadline">{{ entry_deadline|default('Deadline') }}</label>
+            <input type="date" name="deadline" value="{{ deadline }}" id="input-quote-deadline" class="form-control"/>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="input-quote-logo">{{ entry_logo|default('Logo') }}</label>
+            <input type="file" name="logo" id="input-quote-logo" class="form-control" accept=".png,.jpg,.jpeg,.gif,.webp,.pdf,.ai,.eps,.svg"/>
+            <div id="error-logo" class="invalid-feedback"></div>
+          </div>
+          <div class="col-12">
+            <label class="form-label" for="input-quote-message">{{ entry_message|default('Mesaj') }}</label>
+            <textarea name="message" id="input-quote-message" rows="5" class="form-control" placeholder="Tip personalizare, culori, locație logo, buget...">{{ message }}</textarea>
+            <div id="error-message" class="invalid-feedback"></div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" name="mockup" value="1" id="input-quote-mockup" checked/>
+              <label class="form-check-label" for="input-quote-mockup">{{ entry_mockup|default('Machetă gratuită') }}</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" id="button-quote" class="btn craft-btn-offer btn-lg">{{ button_submit|default('Trimite') }}</button>
+            <span class="craft-quote-hint text-muted ms-2">Răspuns la {{ procurement_email }}</span>
+          </div>
+        </div>
+      </form>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+<script>
+(function () {
+  var form = document.getElementById('form-quote');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = document.getElementById('button-quote');
+    var fd = new FormData(form);
+    form.querySelectorAll('.is-invalid').forEach(function (el) { el.classList.remove('is-invalid'); });
+    form.querySelectorAll('.invalid-feedback').forEach(function (el) { el.textContent = ''; el.classList.remove('d-block'); });
+    if (btn) btn.disabled = true;
+    fetch(form.action, { method: 'POST', body: fd, credentials: 'same-origin', headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+      .then(function (r) { return r.json(); })
+      .then(function (json) {
+        if (json.error) {
+          Object.keys(json.error).forEach(function (key) {
+            var input = form.querySelector('[name="' + key + '"]');
+            var err = document.getElementById('error-' + key);
+            if (input) input.classList.add('is-invalid');
+            if (err) { err.textContent = json.error[key]; err.classList.add('d-block'); }
+          });
+          if (btn) btn.disabled = false;
+          return;
+        }
+        if (json.redirect) {
+          window.location = json.redirect;
+        }
+      })
+      .catch(function () { if (btn) btn.disabled = false; });
+  });
+})();
+</script>
+{{ footer }}

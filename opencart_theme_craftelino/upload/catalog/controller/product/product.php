@@ -464,8 +464,43 @@ class Product extends \Opencart\System\Engine\Controller {
 			$data['contact'] = $this->url->link('information/contact', 'language=' . $this->config->get('config_language'));
 			$data['procurement_email'] = \Opencart\Catalog\Controller\Information\Legal::company()['procurement_email'];
 			$data['procurement_mailto'] = 'mailto:' . $data['procurement_email'];
-			$data['button_offer'] = $this->language->get('button_offer');
+			$data['button_offer'] = $this->language->get('button_offer') ?: 'Cerere ofertă';
 			$data['text_offer_band'] = $this->language->get('text_offer_band');
+
+			$lang = 'language=' . $this->config->get('config_language');
+			$pid = (int)$this->request->get['product_id'];
+			$data['quote'] = $this->url->link('information/quote', $lang . '&product_id=' . $pid);
+			$data['quote_mockup'] = $this->url->link('information/quote', $lang . '&product_id=' . $pid . '&quantity=' . max(1, (int)$data['minimum']));
+			$data['link_personalizare'] = $this->url->link('information/personalizare', $lang);
+			$data['button_mockup'] = 'Solicită machetă gratuită';
+			$data['text_volume_title'] = 'Prețuri pe volum';
+			$data['text_volume_hint'] = 'Cantități mai mari = tarif unitar mai bun. Confirmăm oferta pe e-mail.';
+			$data['volume_tiers'] = [];
+
+			if (!empty($data['discounts'])) {
+				foreach ($data['discounts'] as $discount) {
+					$data['volume_tiers'][] = [
+						'qty'   => (int)$discount['quantity'],
+						'price' => $discount['price'],
+						'note'  => 'preț / buc',
+					];
+				}
+			} elseif (!empty($data['price'])) {
+				// Ghid orientativ — oferta fermă vine pe e-mail
+				foreach ([50, 100, 250, 500] as $q) {
+					$data['volume_tiers'][] = [
+						'qty'   => $q,
+						'price' => 'la cerere',
+						'note'  => 'ofertă B2B',
+					];
+				}
+			}
+
+			$data['personalize_types'] = [
+				['label' => 'Print', 'icon' => 'fa-print'],
+				['label' => 'Broderie', 'icon' => 'fa-shirt'],
+				['label' => 'Gravură', 'icon' => 'fa-bolt'],
+			];
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');

@@ -28,7 +28,8 @@
         <ul>
           <li><a href="{{ account }}">{{ text_account }}</a></li>
           <li><a href="{{ order }}">{{ text_order }}</a></li>
-          <li><a href="mailto:{{ procurement_email }}">Cerere ofertă B2B</a></li>
+          <li><a href="{{ link_quote|default(procurement_mailto) }}">Cerere ofertă B2B</a></li>
+          {% if link_catalog is defined %}<li><a href="{{ link_catalog }}">Catalog</a></li>{% endif %}
           <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
         </ul>
       </div>

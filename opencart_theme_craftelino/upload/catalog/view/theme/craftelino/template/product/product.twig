@@ -69,15 +69,32 @@
               {% if points %}
                 <li>{{ text_points }} {{ points }}</li>
               {% endif %}
-              {% if discounts %}
-                <li>
-                  <hr>
-                </li>
-                {% for discount in discounts %}
-                  <li>{{ discount.quantity }}{{ text_discount }}{{ discount.price }}</li>
-                {% endfor %}
-              {% endif %}
             </ul>
+          {% endif %}
+          {% if volume_tiers %}
+            <div class="craft-volume-box">
+              <div class="craft-volume-title">{{ text_volume_title }}</div>
+              <table class="craft-volume-table">
+                <thead><tr><th>Cantitate</th><th>Preț</th></tr></thead>
+                <tbody>
+                  {% for tier in volume_tiers %}
+                    <tr>
+                      <td>{{ tier.qty }}+</td>
+                      <td><strong>{{ tier.price }}</strong> <span class="text-muted">{{ tier.note }}</span></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <p class="craft-volume-hint">{{ text_volume_hint }}</p>
+            </div>
+          {% endif %}
+          {% if personalize_types %}
+            <div class="craft-personalize-types" aria-label="Tipuri personalizare">
+              {% for t in personalize_types %}
+                <span class="craft-ptype"><i class="fa-solid {{ t.icon }}" aria-hidden="true"></i> {{ t.label }}</span>
+              {% endfor %}
+              <a href="{{ link_personalizare }}" class="craft-ptype-link">Logo gratis peste 500 lei</a>
+            </div>
           {% endif %}
           <form method="post" data-oc-toggle="ajax" class="craft-product-icon-actions">
             <div class="btn-group">
@@ -228,8 +245,9 @@
                     <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity" class="form-control"/>
                   </div>
                   <button type="submit" id="button-cart" class="btn btn-lg craft-btn-cart text-uppercase">{{ button_cart }}</button>
-                  <a href="{{ procurement_mailto }}" class="btn btn-lg craft-btn-offer text-uppercase">{{ button_offer }}</a>
+                  <a href="{{ quote }}" class="btn btn-lg craft-btn-offer text-uppercase">{{ button_offer }}</a>
                 </div>
+                <a href="{{ quote_mockup }}" class="craft-mockup-cta"><i class="fa-solid fa-eye"></i> {{ button_mockup }}</a>
                 <input type="hidden" name="product_id" value="{{ product_id }}" id="input-product-id"/>
                 <div id="error-quantity" class="form-text"></div>
               </div>

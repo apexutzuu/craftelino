@@ -1,0 +1,59 @@
+{{ header }}
+<div class="container craft-landing">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">
+      {{ content_top }}
+      <section class="craft-landing-hero">
+        <div class="craft-landing-copy">
+          <p class="craft-landing-eyebrow">Ofertă Craftelino</p>
+          <h1>{{ heading_title }}</h1>
+          <p class="craft-landing-lead">La comenzi de peste <strong>500 lei</strong>, aplicăm logo-ul firmei tale fără cost de setup pe print, broderie sau gravură (în limitele tehnice ale produsului).</p>
+          <div class="craft-landing-cta">
+            <a class="btn craft-hero-cta" href="{{ link_quote }}">Solicită ofertă</a>
+            <a class="btn craft-btn-outline" href="{{ link_special }}">Vezi bestsellers</a>
+          </div>
+        </div>
+        <div class="craft-landing-visual" aria-hidden="true">
+          <img src="{{ hero_img }}" alt="" width="280" height="280"/>
+        </div>
+      </section>
+
+      <section class="craft-landing-grid" aria-label="Beneficii">
+        <article>
+          <i class="fa-solid fa-gift" aria-hidden="true"></i>
+          <h2>Setup logo inclus</h2>
+          <p>Peste 500 lei comandă — personalizarea standard e inclusă în preț.</p>
+        </article>
+        <article>
+          <i class="fa-solid fa-eye" aria-hidden="true"></i>
+          <h2>Machetă gratuită</h2>
+          <p>Vezi cum arată logo-ul pe produs înainte de producție.</p>
+        </article>
+        <article>
+          <i class="fa-solid fa-truck-fast" aria-hidden="true"></i>
+          <h2>5–7 zile</h2>
+          <p>După aprobarea machetei, livrare tipică în 5–7 zile lucrătoare.</p>
+        </article>
+      </section>
+
+      <section class="craft-landing-steps">
+        <h2>Cum funcționează</h2>
+        <ol>
+          <li><strong>Alegi produsele</strong> și cantitatea.</li>
+          <li><strong>Trimiți logo-ul</strong> (sau cerere ofertă cu atașament).</li>
+          <li><strong>Aprobi macheta</strong> pe e-mail.</li>
+          <li><strong>Producție &amp; livrare</strong> — gata de eveniment sau birou.</li>
+        </ol>
+        <a href="{{ link_catalog }}" class="craft-see-all">Deschide catalogul <i class="fa-solid fa-arrow-right"></i></a>
+      </section>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+{{ footer }}

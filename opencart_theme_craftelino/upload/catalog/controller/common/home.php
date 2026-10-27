@@ -54,9 +54,13 @@ class Home extends \Opencart\System\Engine\Controller {
 			];
 		}
 
-		$data['link_special'] = $this->url->link('product/special', 'language=' . $this->config->get('config_language'));
-		$data['link_sitemap'] = $this->url->link('information/sitemap', 'language=' . $this->config->get('config_language'));
-		$data['link_manufacturer'] = $this->url->link('product/manufacturer', 'language=' . $this->config->get('config_language'));
+		$lang = 'language=' . $this->config->get('config_language');
+		$data['link_special'] = $this->url->link('product/special', $lang);
+		$data['link_sitemap'] = $this->url->link('information/sitemap', $lang);
+		$data['link_manufacturer'] = $this->url->link('product/manufacturer', $lang);
+		$data['link_quote'] = $this->url->link('information/quote', $lang);
+		$data['link_personalizare'] = $this->url->link('information/personalizare', $lang);
+		$data['link_catalog'] = $this->url->link('information/catalog', $lang);
 
 		$hero_end = new \DateTime('last day of this month 23:59:59');
 		$data['hero_campaign_end'] = $hero_end->format('c');
@@ -76,6 +80,30 @@ class Home extends \Opencart\System\Engine\Controller {
 		$data['hero_side_images'] = [
 			'side1' => $img_base . 'hero-tricou.svg',
 			'side2' => $img_base . 'hero-agenda.svg',
+		];
+
+		$data['how_steps'] = [
+			['icon' => 'fa-cart-shopping', 'title' => 'Alegi produsul', 'text' => 'Cantitate și tip personalizare (print, broderie, gravură).'],
+			['icon' => 'fa-upload', 'title' => 'Trimiți logo-ul', 'text' => 'Cerere ofertă cu fișier sau e-mail către procurement.'],
+			['icon' => 'fa-eye', 'title' => 'Aprobi macheta', 'text' => 'Previzualizare gratuită înainte de producție.'],
+			['icon' => 'fa-truck-fast', 'title' => 'Livrare', 'text' => '5–7 zile lucrătoare după confirmare.'],
+		];
+		$data['examples'] = [
+			['img' => $img_base . 'hero-tricou.svg', 'title' => 'Textile brodate', 'text' => 'Tricouri & hanorace cu logo firmă'],
+			['img' => $img_base . 'hero-termos.svg', 'title' => 'Drinkware', 'text' => 'Termosuri și sticle gravate'],
+			['img' => $img_base . 'hero-agenda.svg', 'title' => 'Office kit', 'text' => 'Agende și seturi corporate'],
+			['img' => $img_base . 'hero-pix.svg', 'title' => 'Writing', 'text' => 'Pixuri metal / eco cu logo'],
+		];
+		$data['bundles'] = [
+			['title' => 'Set birou starter', 'text' => 'Agendă + pix + sticky notes — ideal onboarding.', 'href' => $data['link_quote'], 'badge' => 'B2B'],
+			['title' => 'Set eveniment', 'text' => 'Tricou + sticlă + tote bag pentru activări.', 'href' => $data['link_special'], 'badge' => '-25%'],
+			['title' => 'Set cadou corporate', 'text' => 'Termos + agendă + pix premium.', 'href' => $data['link_quote'], 'badge' => 'Top'],
+		];
+		$data['trust_badges'] = [
+			['icon' => 'fa-palette', 'title' => 'Personalizare', 'text' => 'Print · broderie · gravură'],
+			['icon' => 'fa-clock', 'title' => '5–7 zile', 'text' => 'După aprobarea machetei'],
+			['icon' => 'fa-building', 'title' => 'CUI 50982610', 'text' => 'TOP UNDERGROUND GOODS SRL'],
+			['icon' => 'fa-envelope', 'title' => 'procurement@craftelino.ro', 'text' => 'Răspuns ofertă în 24h'],
 		];
 
 		$data['column_left'] = $this->load->controller('common/column_left');

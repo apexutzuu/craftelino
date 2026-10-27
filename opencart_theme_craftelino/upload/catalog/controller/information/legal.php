@@ -33,6 +33,10 @@ class Legal extends \Opencart\System\Engine\Controller {
 				'title' => 'Informații livrare',
 				'href'  => $link('information/legal.delivery', $args),
 			],
+			[
+				'title' => 'Politica cookie',
+				'href'  => $link('information/legal.cookies', $args),
+			],
 		];
 	}
 
@@ -73,6 +77,29 @@ class Legal extends \Opencart\System\Engine\Controller {
 	}
 
 	public function privacy(): void {
+		$this->renderLegalSlug('privacy');
+	}
+
+	public function cookies(): void {
+		$this->renderLegalSlug('cookies');
+	}
+
+	private function renderLegalSlug(string $slug): void {
+		if (is_file(DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php')) {
+			require_once DIR_EXTENSION . 'craftelino/system/library/craft/legal_content.php';
+			$pages = \Opencart\System\Library\Craft\LegalContent::pages(
+				(string)$this->config->get('config_name'),
+				(string)$this->config->get('config_email'),
+				(string)$this->config->get('config_telephone')
+			);
+
+			if (isset($pages[$slug])) {
+				$this->renderPage($pages[$slug]['title'], $pages[$slug]['description']);
+
+				return;
+			}
+		}
+
 		$this->response->redirect($this->url->link('common/home', 'language=' . $this->config->get('config_language')));
 	}
 

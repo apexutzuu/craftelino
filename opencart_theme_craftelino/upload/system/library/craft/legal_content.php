@@ -40,6 +40,7 @@ class LegalContent {
 			'terms'    => ['terms & conditions', 'terms and conditions', 'termeni și condiții', 'termeni si conditii', 'termeni'],
 			'delivery' => ['delivery information', 'delivery', 'informații livrare', 'informatii livrare', 'livrare'],
 			'privacy'  => ['privacy policy', 'privacy', 'politica de confidențialitate', 'politica de confidentialitate', 'confidențialitate', 'confidentialitate'],
+			'cookies'  => ['cookie', 'cookies', 'politica cookie', 'politică cookie', 'politica de cookie'],
 		];
 	}
 
@@ -81,6 +82,16 @@ class LegalContent {
 			. '<h2>Scopuri</h2><ul><li>procesarea comenzilor;</li><li>suport clienți;</li><li>obligații legale;</li><li>securitatea site-ului.</li></ul>'
 			. '<h2>Drepturile persoanelor vizate</h2><p>Acces, rectificare, ștergere, restricționare, portabilitate, opoziție și plângere la ANSPDCP. Solicitările se trimit la <a href="mailto:' . htmlspecialchars($mail, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($mail, ENT_QUOTES, 'UTF-8') . '</a>.</p>';
 
+		$cookies = '<p>Această politică explică modul în care <strong>' . htmlspecialchars($store, ENT_QUOTES, 'UTF-8') . '</strong> folosește cookie-uri pe craftelino.ro.</p>'
+			. '<h2>Ce sunt cookie-urile</h2><p>Fișiere mici stocate în browser, necesare pentru funcționarea magazinului (coș, sesiune, preferințe) sau, cu acordul tău, pentru analiză.</p>'
+			. '<h2>Tipuri folosite</h2><ul>'
+			. '<li><strong>Esențiale</strong> — autentificare, coș, securitate; nu pot fi dezactivate.</li>'
+			. '<li><strong>Preferințe</strong> — limbă, monedă, acceptarea politicii.</li>'
+			. '<li><strong>Analitică</strong> — doar dacă accepți bannerul de cookie-uri.</li>'
+			. '</ul>'
+			. '<h2>Gestionare</h2><p>Poți accepta sau limita cookie-urile din bannerul site-ului. Poți șterge cookie-urile din setările browserului.</p>'
+			. '<h2>Contact</h2><p><a href="mailto:' . htmlspecialchars($mail, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($mail, ENT_QUOTES, 'UTF-8') . '</a></p>';
+
 		return [
 			'terms' => [
 				'title'       => 'Termeni și condiții',
@@ -93,6 +104,10 @@ class LegalContent {
 			'privacy' => [
 				'title'       => 'Politica de confidențialitate',
 				'description' => $privacy,
+			],
+			'cookies' => [
+				'title'       => 'Politica cookie',
+				'description' => $cookies,
 			],
 		];
 	}

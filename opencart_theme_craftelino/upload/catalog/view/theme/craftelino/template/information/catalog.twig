@@ -1,0 +1,33 @@
+{{ header }}
+<div class="container craft-catalog-page">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      <li class="breadcrumb-item"><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">
+      {{ content_top }}
+      <h1>{{ heading_title }}</h1>
+      {% if pdf_missing %}
+        <p class="craft-catalog-note">Catalogul PDF poate fi încărcat în <code>image/catalog/catalog.pdf</code>. Până atunci, navighează pe categorii sau cere oferta pe e-mail.</p>
+      {% endif %}
+      <div class="craft-landing-cta mb-4">
+        <a class="btn craft-hero-cta" href="{{ link_quote }}">Cerere ofertă</a>
+        <a class="btn craft-btn-outline" href="{{ link_special }}">Bestsellers</a>
+        <a class="btn craft-btn-outline" href="mailto:{{ procurement_email }}">{{ procurement_email }}</a>
+      </div>
+      {% if categories %}
+        <div class="craft-cat-grid">
+          {% for cat in categories %}
+            <a class="craft-cat-card" href="{{ cat.href }}"><div class="craft-cat-name">{{ cat.name }}</div></a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <p class="mt-3"><a href="{{ link_sitemap }}" class="craft-see-all">Toate categoriile <i class="fa-solid fa-arrow-right"></i></a></p>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+{{ footer }}

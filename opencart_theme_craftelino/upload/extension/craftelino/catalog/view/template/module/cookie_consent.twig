@@ -1,0 +1,14 @@
+<div id="craft-cookie-bar" class="craft-cookie-bar" role="dialog" aria-live="polite" aria-label="Cookie-uri">
+  <div class="container craft-cookie-inner">
+    <p class="craft-cookie-text mb-0">
+      {{ message }}
+      <a href="{{ policy_href }}" class="craft-cookie-link">{{ policy_label }}</a>
+    </p>
+    <div class="craft-cookie-actions">
+      <button type="button" class="craft-cookie-btn craft-cookie-btn-accept" data-craft-cookie-url="{{ confirm_agree }}">{{ button_accept }}</button>
+      {% if show_reject %}
+        <button type="button" class="craft-cookie-btn craft-cookie-btn-reject" data-craft-cookie-url="{{ confirm_reject }}">{{ button_reject }}</button>
+      {% endif %}
+    </div>
+  </div>
+</div>

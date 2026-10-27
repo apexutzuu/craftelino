@@ -57,6 +57,72 @@
   </div>
 </div>
 
+{% if trust_badges %}
+  <section class="container craft-section craft-trust" aria-label="De ce Craftelino">
+    <div class="craft-trust-grid">
+      {% for b in trust_badges %}
+        <div class="craft-trust-item"><i class="fa-solid {{ b.icon }}" aria-hidden="true"></i><div><strong>{{ b.title }}</strong><span>{{ b.text }}</span></div></div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% if how_steps %}
+  <section class="container craft-section" aria-label="Cum merge personalizarea">
+    <div class="craft-section-header">
+      <div class="craft-section-title">Cum merge personalizarea</div>
+      <a href="{{ link_personalizare }}" class="craft-see-all">Logo gratuit peste 500 lei <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <ol class="craft-how-grid">
+      {% for step in how_steps %}
+        <li class="craft-how-card">
+          <span class="craft-how-num">{{ loop.index }}</span>
+          <i class="fa-solid {{ step.icon }}" aria-hidden="true"></i>
+          <strong>{{ step.title }}</strong>
+          <p>{{ step.text }}</p>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}
+
+{% if examples %}
+  <section class="container craft-section" aria-label="Exemple personalizare">
+    <div class="craft-section-header">
+      <div class="craft-section-title">Exemple de branding</div>
+      <a href="{{ link_quote }}" class="craft-see-all">Solicită machetă <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="craft-examples-grid">
+      {% for ex in examples %}
+        <article class="craft-example-card">
+          <img src="{{ ex.img }}" alt="" width="160" height="140" loading="lazy" decoding="async"/>
+          <h3>{{ ex.title }}</h3>
+          <p>{{ ex.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% if bundles %}
+  <section class="container craft-section" aria-label="Pachete corporate">
+    <div class="craft-section-header">
+      <div class="craft-section-title">Pachete corporate</div>
+      <a href="{{ link_catalog }}" class="craft-see-all">Catalog <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="craft-bundles-grid">
+      {% for bundle in bundles %}
+        <a class="craft-bundle-card" href="{{ bundle.href }}">
+          <span class="craft-bundle-badge">{{ bundle.badge }}</span>
+          <h3>{{ bundle.title }}</h3>
+          <p>{{ bundle.text }}</p>
+          <span class="craft-bundle-cta">Cerere ofertă <i class="fa-solid fa-arrow-right"></i></span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
 {% if home_categories %}
   <section class="container craft-section" aria-label="Categorii">
     <div class="craft-section-header">

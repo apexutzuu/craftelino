@@ -61,6 +61,11 @@
       <section class="craft-sitemap-panel craft-sitemap-panel--accent" aria-labelledby="craft-sitemap-shop-heading">
         <h2 id="craft-sitemap-shop-heading" class="craft-sitemap-panel-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Magazin</h2>
         <ul class="craft-sitemap-quick">
+          {% if craft_pages %}
+            {% for page in craft_pages %}
+              <li><a href="{{ page.href }}"><i class="fa-solid fa-link" aria-hidden="true"></i> {{ page.title }}</a></li>
+            {% endfor %}
+          {% endif %}
           <li><a href="{{ special }}"><i class="fa-solid fa-percent" aria-hidden="true"></i> {{ text_special }}</a></li>
           <li><a href="{{ manufacturer }}"><i class="fa-solid fa-industry" aria-hidden="true"></i> Producători</a></li>
           <li><a href="{{ search }}"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> {{ text_search }}</a></li>

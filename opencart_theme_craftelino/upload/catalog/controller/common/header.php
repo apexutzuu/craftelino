@@ -59,6 +59,8 @@ class Header extends \Opencart\System\Engine\Controller {
 
 		if ($icon_file && is_file(DIR_IMAGE . $icon_file)) {
 			$data['icon'] = $this->config->get('config_url') . 'image/' . str_replace(' ', '%20', $icon_file);
+		} elseif (is_file(DIR_IMAGE . 'catalog/craftelino-favicon.svg')) {
+			$data['icon'] = $this->config->get('config_url') . 'image/catalog/craftelino-favicon.svg';
 		} else {
 			$data['icon'] = '';
 		}
@@ -122,8 +124,22 @@ class Header extends \Opencart\System\Engine\Controller {
 		$company = \Opencart\Catalog\Controller\Information\Legal::company();
 		$data['procurement_email'] = $company['procurement_email'];
 		$data['procurement_mailto'] = 'mailto:' . $data['procurement_email'];
-		$data['special'] = $this->url->link('product/special', 'language=' . $this->config->get('config_language'));
-		$data['manufacturer'] = $this->url->link('product/manufacturer', 'language=' . $this->config->get('config_language'));
+		$lang = 'language=' . $this->config->get('config_language');
+		$data['special'] = $this->url->link('product/special', $lang);
+		$data['manufacturer'] = $this->url->link('product/manufacturer', $lang);
+		$data['link_quote'] = $this->url->link('information/quote', $lang);
+		$data['link_personalizare'] = $this->url->link('information/personalizare', $lang);
+		$data['link_catalog'] = $this->url->link('information/catalog', $lang);
+		$data['og_url'] = $this->config->get('config_url');
+		$data['og_image'] = '';
+
+		if (!empty($data['logo'])) {
+			$data['og_image'] = $data['logo'];
+		} elseif (is_file(DIR_IMAGE . 'catalog/craftelino-logo.png')) {
+			$data['og_image'] = $this->config->get('config_url') . 'image/catalog/craftelino-logo.png';
+		} elseif (is_file(DIR_IMAGE . 'catalog/craftelino-logo.svg')) {
+			$data['og_image'] = $this->config->get('config_url') . 'image/catalog/craftelino-logo.svg';
+		}
 
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');

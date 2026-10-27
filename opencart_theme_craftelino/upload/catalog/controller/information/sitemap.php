@@ -80,6 +80,16 @@ class Sitemap extends \Opencart\System\Engine\Controller {
 		$data['search'] = $this->url->link('product/search', 'language=' . $this->config->get('config_language'));
 		$data['contact'] = $this->url->link('information/contact', 'language=' . $this->config->get('config_language'));
 
+		$lang = 'language=' . $this->config->get('config_language');
+		$data['craft_pages'] = [
+			['title' => 'Cerere ofertă B2B', 'href' => $this->url->link('information/quote', $lang)],
+			['title' => 'Personalizare logo gratuită', 'href' => $this->url->link('information/personalizare', $lang)],
+			['title' => 'Catalog', 'href' => $this->url->link('information/catalog', $lang)],
+			['title' => 'Bestsellers', 'href' => $this->url->link('product/special', $lang)],
+			['title' => 'Politica cookie', 'href' => $this->url->link('information/legal.cookies', $lang)],
+			['title' => 'Informații livrare', 'href' => $this->url->link('information/legal.delivery', $lang)],
+		];
+
 		// Information
 		$this->load->model('catalog/information');
 

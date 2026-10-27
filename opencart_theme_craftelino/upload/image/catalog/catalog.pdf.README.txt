@@ -1,0 +1,3 @@
+Încarcă aici fișierul catalog.pdf (înlocuiește acest README).
+Calea pe server: image/catalog/catalog.pdf
+Pagina /index.php?route=information/catalog îl servește automat dacă există.
