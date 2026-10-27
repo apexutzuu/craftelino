@@ -1,0 +1,98 @@
+{{ header }}
+<div id="information-sitemap" class="container craft-sitemap-page">
+  <nav class="craft-sitemap-breadcrumb" aria-label="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      {% if loop.last %}
+        <span class="craft-sitemap-breadcrumb-current">{{ breadcrumb.text }}</span>
+      {% else %}
+        <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <header class="craft-sitemap-hero">
+    <div>
+      <h1 class="craft-sitemap-title">{{ heading_title }}</h1>
+      <p class="craft-sitemap-lead">Navigare rapidă prin categorii, cont și pagini informative.</p>
+    </div>
+    <a href="{{ special }}" class="craft-sitemap-hero-cta"><i class="fa-solid fa-tags" aria-hidden="true"></i> {{ text_special }}</a>
+  </header>
+
+  <div class="row g-3 craft-sitemap-layout">
+    <div class="col-lg-8">
+      <section class="craft-sitemap-panel" aria-labelledby="craft-sitemap-cat-heading">
+        <h2 id="craft-sitemap-cat-heading" class="craft-sitemap-panel-title"><i class="fa-solid fa-folder-tree" aria-hidden="true"></i> Categorii produse</h2>
+        {% if categories %}
+          <div class="craft-sitemap-categories">
+            {% for category_1 in categories %}
+              <article class="craft-sitemap-cat-card">
+                <a class="craft-sitemap-cat-head" href="{{ category_1.href }}">
+                  <span class="craft-sitemap-cat-icon"><i class="fa-solid {{ category_1.icon|default('fa-box') }}" aria-hidden="true"></i></span>
+                  <span class="craft-sitemap-cat-name">{{ category_1.name }}</span>
+                  <i class="fa-solid fa-arrow-right craft-sitemap-cat-arrow" aria-hidden="true"></i>
+                </a>
+                {% if category_1.children %}
+                  <div class="craft-sitemap-sub">
+                    {% for category_2 in category_1.children %}
+                      <div class="craft-sitemap-sub-group">
+                        <a class="craft-sitemap-chip craft-sitemap-chip--l2" href="{{ category_2.href }}">{{ category_2.name }}</a>
+                        {% if category_2.children %}
+                          <div class="craft-sitemap-sub-l3">
+                            {% for category_3 in category_2.children %}
+                              <a class="craft-sitemap-chip craft-sitemap-chip--l3" href="{{ category_3.href }}">{{ category_3.name }}</a>
+                            {% endfor %}
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p class="craft-sitemap-empty">Nu există categorii încă.</p>
+        {% endif %}
+      </section>
+    </div>
+
+    <aside class="col-lg-4">
+      <section class="craft-sitemap-panel craft-sitemap-panel--accent" aria-labelledby="craft-sitemap-shop-heading">
+        <h2 id="craft-sitemap-shop-heading" class="craft-sitemap-panel-title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Magazin</h2>
+        <ul class="craft-sitemap-quick">
+          <li><a href="{{ special }}"><i class="fa-solid fa-percent" aria-hidden="true"></i> {{ text_special }}</a></li>
+          <li><a href="{{ manufacturer }}"><i class="fa-solid fa-industry" aria-hidden="true"></i> Producători</a></li>
+          <li><a href="{{ search }}"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> {{ text_search }}</a></li>
+          <li><a href="{{ cart }}"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i> {{ text_cart }}</a></li>
+          <li><a href="{{ checkout }}"><i class="fa-solid fa-credit-card" aria-hidden="true"></i> {{ text_checkout }}</a></li>
+        </ul>
+      </section>
+
+      <section class="craft-sitemap-panel" aria-labelledby="craft-sitemap-account-heading">
+        <h2 id="craft-sitemap-account-heading" class="craft-sitemap-panel-title"><i class="fa-solid fa-user" aria-hidden="true"></i> {{ text_account }}</h2>
+        <ul class="craft-sitemap-quick">
+          <li><a href="{{ account }}"><i class="fa-solid fa-circle-user" aria-hidden="true"></i> {{ text_account }}</a></li>
+          <li><a href="{{ edit }}"><i class="fa-solid fa-pen" aria-hidden="true"></i> {{ text_edit }}</a></li>
+          <li><a href="{{ password }}"><i class="fa-solid fa-key" aria-hidden="true"></i> {{ text_password }}</a></li>
+          <li><a href="{{ address }}"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ text_address }}</a></li>
+          <li><a href="{{ history }}"><i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> {{ text_history }}</a></li>
+          <li><a href="{{ download }}"><i class="fa-solid fa-download" aria-hidden="true"></i> {{ text_download }}</a></li>
+        </ul>
+      </section>
+
+      <section class="craft-sitemap-panel" aria-labelledby="craft-sitemap-info-heading">
+        <h2 id="craft-sitemap-info-heading" class="craft-sitemap-panel-title"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> {{ text_information }}</h2>
+        <ul class="craft-sitemap-quick">
+          {% for information in informations %}
+            <li><a href="{{ information.href }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> {{ information.title }}</a></li>
+          {% endfor %}
+          <li><a href="{{ contact }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> {{ text_contact }}</a></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+
+  {{ content_top }}{{ content_bottom }}
+</div>
+{{ footer }}

@@ -1,0 +1,1782 @@
+/* Craftelino — promo shop look (OpenCart 4.1), Barlow + navy #1a3a5c + accent #e8a020 */
+/* Fonts: single load in common/header.twig (avoid duplicate @import). */
+
+body.craftelino-shop {
+  font-family: "Barlow", system-ui, sans-serif;
+  background: #f4f2ee;
+  color: #1a1a1a;
+}
+
+body.craftelino-shop #container {
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body.craftelino-shop #container > main {
+  flex: 1 0 auto;
+}
+
+body.craftelino-shop #content,
+body.craftelino-shop #column-left,
+body.craftelino-shop #column-right {
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  body.craftelino-shop #content,
+  body.craftelino-shop #column-left,
+  body.craftelino-shop #column-right {
+    padding-bottom: 2rem;
+  }
+}
+
+body.craftelino-shop h1,
+body.craftelino-shop h2,
+body.craftelino-shop h3,
+body.craftelino-shop #content .breadcrumb {
+  color: #1a1a1a;
+}
+
+body.craftelino-shop .craft-topbar a:focus-visible,
+body.craftelino-shop .craft-header a:focus-visible,
+body.craftelino-shop .craft-header button:focus-visible,
+body.craftelino-shop .craft-nav a:focus-visible,
+body.craftelino-shop .craft-footer a:focus-visible {
+  outline: 2px solid #e8a020;
+  outline-offset: 2px;
+}
+
+body.craftelino-shop .craft-hbtn:focus-visible {
+  outline: 2px solid #1a3a5c;
+  outline-offset: 2px;
+}
+
+/* ——— Top bar ——— */
+.craft-topbar {
+  background: #1a3a5c;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.craft-topbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.craft-topbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.craft-topbar-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.craft-topbar-links a {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+}
+
+.craft-topbar-links a:hover {
+  color: #fff;
+}
+
+.craft-topbar .list-inline {
+  margin-bottom: 0;
+}
+
+.craft-topbar .list-inline a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ——— Header ——— */
+.craft-header {
+  background: #fff;
+  border-bottom: 2px solid #e8e5df;
+  padding: 14px 0;
+}
+
+.craft-header .container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.craft-logo {
+  flex-shrink: 0;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(26px, 4vw, 32px);
+  font-weight: 800;
+  color: #1a3a5c;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.craft-logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.craft-logo span {
+  color: #e8a020;
+}
+
+.craft-logo img {
+  max-height: 48px;
+  width: auto;
+}
+
+.craft-search-wrap {
+  flex: 1;
+  min-width: 200px;
+  max-width: 520px;
+}
+
+.craft-search-wrap form {
+  display: flex;
+  width: 100%;
+  margin: 0;
+}
+
+.craft-search-wrap input[type="text"] {
+  flex: 1;
+  border: 2px solid #ddd;
+  border-right: none;
+  padding: 10px 16px;
+  font-family: "Barlow", sans-serif;
+  font-size: 14px;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+  background: #fafafa;
+}
+
+.craft-search-wrap input[type="text"]:focus {
+  border-color: #1a3a5c;
+  background: #fff;
+}
+
+.craft-search-wrap button[type="submit"] {
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 0 6px 6px 0;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.craft-search-wrap button[type="submit"]:hover {
+  background: #122a42;
+}
+
+.craft-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.craft-hbtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: "Barlow", sans-serif;
+  font-size: 11px;
+  color: #555;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.craft-hbtn:hover {
+  background: #f4f2ee;
+  color: #333;
+}
+
+.craft-hbtn i {
+  font-size: 22px;
+  color: #1a1a1a;
+}
+
+.craft-cart-slot {
+  position: relative;
+}
+
+.craft-cart-slot .craft-hbtn {
+  position: relative;
+}
+
+.craft-cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  background: #e8a020;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ——— Main nav ——— */
+.craft-nav {
+  background: #1a3a5c;
+  padding: 0;
+  position: relative;
+  z-index: 200;
+}
+
+.craft-nav .container {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  overflow: visible;
+  gap: 0;
+}
+
+.craft-nav .dropdown {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.craft-nav .dropdown-menu {
+  z-index: 1100;
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+  margin-top: 0 !important;
+}
+
+.craft-nav-dropdown-menu .dropdown-header {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a3a5c;
+  letter-spacing: 0.06em;
+}
+
+.craft-nav-dropdown-menu .dropdown-item {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.craft-nav-dropdown-menu .dropdown-item:hover,
+.craft-nav-dropdown-menu .dropdown-item:focus {
+  background: #f4f2ee;
+  color: #1a3a5c;
+}
+
+.craft-nav-all-link {
+  font-weight: 600;
+  color: #e8a020 !important;
+}
+
+.craft-nav-all {
+  background: #e8a020;
+  color: #fff !important;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 0;
+}
+
+.craft-nav-all:hover,
+.craft-nav-all:focus {
+  background: #c98a15 !important;
+  color: #fff !important;
+}
+
+.craft-nav-all.dropdown-toggle::after {
+  margin-left: 6px;
+}
+
+.craft-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
+  min-height: 100%;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.craft-nav-links a {
+  color: #c8d8e8;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 14px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.craft-nav-links a:hover {
+  color: #fff;
+}
+
+.craft-nav-links a.craft-hot {
+  color: #f5c842;
+}
+
+.craft-nav-links a.craft-hot:hover {
+  color: #ffd966;
+}
+
+/* ——— Hero ——— */
+.craft-hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 12px;
+  padding: 16px 0 0;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+@media (max-width: 991px) {
+  .craft-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.craft-hero-main {
+  background: linear-gradient(135deg, #1a3a5c 0%, #244f72 55%, #1a3a5c 100%);
+  border-radius: 10px;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.craft-hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.craft-hero-copy {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.craft-hero-right {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.craft-hero-products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: min(100%, 220px);
+  margin: 0;
+}
+
+.craft-hero-product-wrap {
+  margin: 0;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+  backdrop-filter: blur(4px);
+}
+
+.craft-hero-product-wrap img {
+  width: 100%;
+  max-width: 88px;
+  height: auto;
+  max-height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
+.craft-hero-product-1 { transform: rotate(-4deg); }
+.craft-hero-product-2 { transform: rotate(3deg); }
+.craft-hero-product-3 { transform: rotate(-2deg); }
+.craft-hero-product-4 { transform: rotate(5deg); }
+
+@media (max-width: 991px) {
+  .craft-hero-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .craft-hero-right {
+    width: 100%;
+  }
+
+  .craft-hero-products {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+.craft-hero-main::before {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(232, 160, 32, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.craft-hero-badge {
+  display: inline-block;
+  background: #e8a020;
+  color: #fff;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+.craft-hero-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.craft-hero-title span {
+  color: #e8a020;
+}
+
+.craft-hero-sub {
+  font-size: 15px;
+  color: #8aaac4;
+  margin-bottom: 22px;
+  max-width: 360px;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+.craft-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e8a020;
+  color: #fff;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  text-decoration: none;
+  transition: background 0.15s;
+  position: relative;
+  z-index: 1;
+}
+
+.craft-hero-cta:hover {
+  background: #c98a15;
+  color: #fff;
+}
+
+.craft-countdown {
+  position: static;
+  transform: none;
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
+}
+
+.craft-cd-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e8a020;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.craft-cd-digits {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.craft-cd-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 10px 10px;
+  text-align: center;
+  min-width: 44px;
+}
+
+@media (min-width: 480px) {
+  .craft-cd-box {
+    min-width: 48px;
+    padding: 10px 12px;
+  }
+}
+
+.craft-cd-num {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.craft-cd-unit {
+  font-size: 10px;
+  color: #8aaac4;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.craft-hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.craft-side-banner {
+  border-radius: 10px;
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  min-height: 130px;
+}
+
+.craft-side-visual {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.craft-side-img {
+  width: 88px;
+  height: auto;
+  max-height: 88px;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
+  pointer-events: none;
+}
+
+.craft-side-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.craft-side-1 {
+  background: linear-gradient(135deg, #2c5f2e 0%, #1e4520 100%);
+}
+
+.craft-side-2 {
+  background: linear-gradient(135deg, #6b2d6b 0%, #4a1f4a 100%);
+}
+
+.craft-sb-label {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 4px;
+}
+
+.craft-sb-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.craft-sb-discount {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: #f5c842;
+  line-height: 1;
+  margin-top: 6px;
+}
+
+/* ——— Promo strip ——— */
+.craft-promo-strip {
+  background: #fff;
+  border-top: 2px solid #e8e5df;
+  border-bottom: 2px solid #e8e5df;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.craft-promo-strip .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.craft-promo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 8px;
+}
+
+.craft-promo-item i {
+  font-size: 26px;
+  color: #e8a020;
+  flex-shrink: 0;
+}
+
+.craft-promo-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.craft-promo-item span {
+  font-size: 12px;
+  color: #888;
+}
+
+/* ——— Home sections (categories / brands) ——— */
+.craft-section {
+  padding: 22px 0 0;
+}
+
+.craft-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.craft-section-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.craft-section-title::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 24px;
+  background: #e8a020;
+  border-radius: 2px;
+}
+
+.craft-section-title--module {
+  font-size: 22px;
+}
+
+.craft-section-title--module::before {
+  height: 22px;
+}
+
+body.craftelino-shop .craft-module-products {
+  padding: 12px 0 28px;
+}
+
+body.craftelino-shop .craft-module-products-head {
+  align-items: center;
+}
+
+.craft-see-all {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a3a5c;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: transparent;
+  font-family: "Barlow", sans-serif;
+  text-decoration: none;
+}
+
+.craft-see-all:hover {
+  text-decoration: underline;
+  color: #122a42;
+}
+
+.craft-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+@media (min-width: 992px) {
+  .craft-cat-grid {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+
+.craft-cat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 10px;
+  text-align: center;
+  border: 1.5px solid #e8e5df;
+  transition: border-color 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.craft-cat-card:hover {
+  border-color: #e8a020;
+  transform: translateY(-2px);
+  color: inherit;
+}
+
+.craft-cat-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+  display: block;
+  color: #1a3a5c;
+}
+
+.craft-cat-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  line-height: 1.3;
+}
+
+.craft-brand-bar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.craft-brand-chip {
+  flex-shrink: 0;
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #555;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.craft-brand-chip:hover {
+  border-color: #e8a020;
+  color: #1a3a5c;
+}
+
+/* ——— Product cards (thumb) ——— */
+body.craftelino-shop .product-thumb.craft-card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1.5px solid #e8e5df;
+  overflow: hidden;
+  transition: border-color 0.15s, transform 0.15s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body.craftelino-shop .product-thumb.craft-card:hover {
+  border-color: #e8a020;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(26, 58, 92, 0.08);
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-card-img {
+  background: #f8f6f2;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-card-img img {
+  max-height: 85%;
+  max-width: 85%;
+  object-fit: contain;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-badge-sale,
+body.craftelino-shop .product-thumb.craft-card .craft-badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 4px 9px;
+  border-radius: 4px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-badge-sale {
+  background: #e8a020;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-badge-new {
+  background: #1a3a5c;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-wish {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 2;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-wish:hover {
+  color: #e8a020;
+  border-color: #e8a020;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-card-body {
+  padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+body.craftelino-shop .product-thumb.craft-card .craft-brand {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  min-height: 14px;
+}
+
+body.craftelino-shop .product-thumb.craft-card .description h4 {
+  font-size: 13px;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.35;
+  margin: 0 0 8px;
+}
+
+body.craftelino-shop .product-thumb.craft-card .description h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+body.craftelino-shop .product-thumb.craft-card .description h4 a:hover {
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .product-thumb.craft-card .description p {
+  display: none;
+}
+
+body.craftelino-shop .product-thumb.craft-card .price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+body.craftelino-shop .product-thumb.craft-card .price-new {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .product-thumb.craft-card .price-old {
+  font-size: 13px;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+body.craftelino-shop .product-thumb.craft-card .price-tax {
+  display: none;
+}
+
+body.craftelino-shop .product-thumb.craft-card .button {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.craftelino-shop .product-thumb.craft-card .button button[type="submit"] {
+  width: 100%;
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 8px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s;
+}
+
+body.craftelino-shop .product-thumb.craft-card .button button[type="submit"]:hover {
+  background: #e8a020;
+}
+
+body.craftelino-shop .product-thumb.craft-card .button button[formaction*="compare"] {
+  display: none;
+}
+
+body.craftelino-shop .product-thumb.craft-card .button button[formaction*="wishlist"] {
+  display: none;
+}
+
+/* Category / search product grid — 5 coloane pe ecran mare */
+body.craftelino-shop #product-list.row {
+  --bs-gutter-x: 12px;
+  --bs-gutter-y: 12px;
+}
+
+/* ——— Footer ——— */
+/* Override OC global footer { position: absolute } so footer height counts in layout. */
+body.craftelino-shop footer.craft-footer {
+  position: relative;
+  bottom: auto;
+  border: none;
+}
+
+.craft-footer {
+  background: #1a3a5c;
+  color: #8aaac4;
+  padding: 28px 0 20px;
+  margin-top: 32px;
+}
+
+.craft-footer a {
+  color: #7090a8;
+  text-decoration: none;
+}
+
+.craft-footer a:hover {
+  color: #fff;
+}
+
+.craft-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 767px) {
+  .craft-footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.craft-footer-logo {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.craft-footer-logo span {
+  color: #e8a020;
+}
+
+.craft-footer-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #7090a8;
+}
+
+.craft-footer-company {
+  margin-bottom: 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #8aaac4;
+}
+
+.craft-footer-company p {
+  margin: 0 0 6px;
+}
+
+.craft-footer-company-name {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff !important;
+  letter-spacing: 0.02em;
+}
+
+.craft-footer-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid #244f72;
+  padding-top: 12px;
+}
+
+.craft-footer-services li {
+  font-size: 13px;
+  color: #7090a8;
+  margin-bottom: 6px;
+}
+
+.craft-footer-services li span {
+  color: #8aaac4;
+}
+
+/* ——— Legal pages (information/legal/*) ——— */
+body.craftelino-shop .craft-legal-page {
+  padding: 20px 0 48px;
+}
+
+body.craftelino-shop .craft-legal-panel {
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 10px;
+  padding: 28px 32px;
+  max-width: 900px;
+}
+
+body.craftelino-shop .craft-legal-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a3a5c;
+  margin: 0 0 20px;
+}
+
+body.craftelino-shop .craft-legal-body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #333;
+}
+
+body.craftelino-shop .craft-legal-body h2 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3a5c;
+  margin: 24px 0 10px;
+}
+
+body.craftelino-shop .craft-legal-body ul {
+  padding-left: 1.2rem;
+  margin-bottom: 12px;
+}
+
+body.craftelino-shop .craft-legal-body a {
+  color: #1a3a5c;
+  font-weight: 600;
+}
+
+body.craftelino-shop .craft-legal-back {
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #e8e5df;
+}
+
+.craft-footer-col h4 {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.craft-footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.craft-footer-col li {
+  font-size: 13px;
+  color: #7090a8;
+  margin-bottom: 7px;
+}
+
+.craft-footer-trust {
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #8aaac4;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  border: 1px solid #244f72;
+}
+
+.craft-footer-bottom {
+  border-top: 1px solid #244f72;
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: #4a6e88;
+}
+
+.craft-pay-icons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.craft-pay-icons span {
+  background: #122a42;
+  border: 1px solid #2a4f6e;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7090a8;
+}
+
+/* Bootstrap dropdown in header */
+.craft-header-actions .dropdown-menu {
+  font-size: 14px;
+}
+
+.craft-header-actions .craft-hbtn.dropdown-toggle::after {
+  display: none;
+}
+
+/* ========== Product page (product/product) ========== */
+body.craftelino-shop .craft-product-page {
+  padding-bottom: 4rem;
+  margin-bottom: 5rem;
+}
+
+body.craftelino-shop .craft-product-breadcrumb {
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+}
+
+body.craftelino-shop .craft-product-breadcrumb .breadcrumb a {
+  color: #1a3a5c;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+body.craftelino-shop .craft-product-breadcrumb .breadcrumb-item.active,
+body.craftelino-shop .craft-product-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+  color: #888;
+}
+
+body.craftelino-shop .craft-product-top {
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+body.craftelino-shop .craft-product-main-img {
+  background: #f8f6f2;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+
+body.craftelino-shop .craft-product-thumb {
+  border-color: #e8e5df !important;
+}
+
+body.craftelino-shop .craft-product-thumbs a {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+  border: 1.5px solid #e8e5df;
+  border-radius: 8px;
+  padding: 2px;
+  transition: border-color 0.15s;
+}
+
+body.craftelino-shop .craft-product-thumbs a:hover {
+  border-color: #e8a020;
+}
+
+body.craftelino-shop .craft-product-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: #1a1a1a;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+
+body.craftelino-shop .craft-product-meta li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+body.craftelino-shop .craft-product-meta a {
+  color: #1a3a5c;
+  font-weight: 600;
+}
+
+body.craftelino-shop .craft-product-prices {
+  margin: 16px 0;
+}
+
+body.craftelino-shop .craft-product-prices .price-new {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-product-prices .price-old {
+  font-size: 1.1rem;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+body.craftelino-shop .craft-product-prices h2 {
+  margin: 0;
+}
+
+body.craftelino-shop .craft-product-icon-actions .craft-product-icon-btn {
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-product-icon-actions .craft-product-icon-btn:hover {
+  border-color: #e8a020;
+  color: #e8a020;
+}
+
+body.craftelino-shop .craft-qty-group {
+  max-width: 140px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+body.craftelino-shop .craft-qty-group .input-group-text {
+  background: #f4f2ee;
+  border-color: #ddd;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+body.craftelino-shop .craft-qty-group .form-control {
+  border-color: #ddd;
+}
+
+body.craftelino-shop .craft-btn-cart {
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 6px;
+}
+
+body.craftelino-shop .craft-btn-cart:hover {
+  background: #e8a020;
+  color: #fff;
+}
+
+body.craftelino-shop .craft-btn-offer {
+  background: #fff;
+  color: #1a3a5c;
+  border: 2px solid #e8a020;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 6px;
+}
+
+body.craftelino-shop .craft-btn-offer:hover {
+  background: #e8a020;
+  color: #fff;
+  border-color: #e8a020;
+}
+
+body.craftelino-shop .craft-product-tabs {
+  border-bottom: 2px solid #e8e5df;
+  margin-top: 8px;
+}
+
+body.craftelino-shop .craft-product-tabs .nav-link {
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700;
+  color: #555;
+  border: none;
+  border-radius: 0;
+  padding: 12px 18px;
+}
+
+body.craftelino-shop .craft-product-tabs .nav-link.active {
+  color: #1a3a5c;
+  border-bottom: 3px solid #e8a020;
+  background: transparent;
+}
+
+body.craftelino-shop .craft-product-tabs .nav-link:hover {
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-product-bottom-band {
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
+  padding-top: 1rem;
+}
+
+body.craftelino-shop .craft-product-bottom-band-inner {
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+body.craftelino-shop .craft-product-promo-banner {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: 72px;
+  margin: 0 auto 16px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1a3a5c 0%, #122a42 50%, #1a3a5c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+body.craftelino-shop .craft-product-promo-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(232, 160, 32, 0.35) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+body.craftelino-shop .craft-product-promo-banner::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 45%;
+  background: linear-gradient(to top, rgba(232, 160, 32, 0.14), transparent);
+  pointer-events: none;
+}
+
+body.craftelino-shop .craft-product-bottom-tagline {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+body.craftelino-shop .craft-btn-offer-wide {
+  min-width: 220px;
+}
+
+body.craftelino-shop #product .form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+body.craftelino-shop #product hr {
+  border-color: #e8e5df;
+}
+
+body.craftelino-shop .craft-product-summary .rating .fa-solid.fa-star {
+  color: #e8a020;
+}
+
+/* ——— Site map (information/sitemap) ——— */
+body.craftelino-shop .craft-sitemap-page {
+  padding: 20px 0 48px;
+}
+
+body.craftelino-shop .craft-sitemap-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+body.craftelino-shop .craft-sitemap-breadcrumb a {
+  color: #1a3a5c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+body.craftelino-shop .craft-sitemap-breadcrumb a:hover {
+  color: #e8a020;
+}
+
+body.craftelino-shop .craft-sitemap-breadcrumb i {
+  font-size: 10px;
+  color: #aaa;
+}
+
+body.craftelino-shop .craft-sitemap-breadcrumb-current {
+  color: #666;
+  font-weight: 500;
+}
+
+body.craftelino-shop .craft-sitemap-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, #1a3a5c 0%, #244f72 100%);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+body.craftelino-shop .craft-sitemap-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 800;
+  margin: 0 0 6px;
+  letter-spacing: -0.5px;
+}
+
+body.craftelino-shop .craft-sitemap-lead {
+  margin: 0;
+  font-size: 14px;
+  color: #8aaac4;
+  max-width: 480px;
+}
+
+body.craftelino-shop .craft-sitemap-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #e8a020;
+  color: #fff;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+body.craftelino-shop .craft-sitemap-hero-cta:hover {
+  background: #c98a15;
+  color: #fff;
+}
+
+body.craftelino-shop .craft-sitemap-layout {
+  align-items: flex-start;
+}
+
+body.craftelino-shop .craft-sitemap-panel {
+  background: #fff;
+  border: 1.5px solid #e8e5df;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+body.craftelino-shop .craft-sitemap-panel--accent {
+  border-color: #c8d8e8;
+  background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+}
+
+body.craftelino-shop .craft-sitemap-panel-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a3a5c;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+body.craftelino-shop .craft-sitemap-panel-title i {
+  color: #e8a020;
+  font-size: 16px;
+}
+
+body.craftelino-shop .craft-sitemap-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+body.craftelino-shop .craft-sitemap-cat-card {
+  border: 1px solid #e8e5df;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+body.craftelino-shop .craft-sitemap-cat-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #fff;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: background 0.15s;
+}
+
+body.craftelino-shop .craft-sitemap-cat-head:hover {
+  background: #f4f2ee;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-sitemap-cat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: #1a3a5c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+}
+
+body.craftelino-shop .craft-sitemap-cat-name {
+  flex: 1;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+body.craftelino-shop .craft-sitemap-cat-arrow {
+  color: #e8a020;
+  font-size: 14px;
+}
+
+body.craftelino-shop .craft-sitemap-sub {
+  padding: 12px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.craftelino-shop .craft-sitemap-sub-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+body.craftelino-shop .craft-sitemap-sub-l3 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  padding-left: 12px;
+  border-left: 2px solid #e8e5df;
+  margin-top: 4px;
+}
+
+body.craftelino-shop .craft-sitemap-chip {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+body.craftelino-shop .craft-sitemap-chip--l2 {
+  background: #e8e5df;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-sitemap-chip--l2:hover {
+  background: #1a3a5c;
+  color: #fff;
+}
+
+body.craftelino-shop .craft-sitemap-chip--l3 {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #555;
+  font-weight: 500;
+}
+
+body.craftelino-shop .craft-sitemap-chip--l3:hover {
+  border-color: #e8a020;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-sitemap-quick {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+body.craftelino-shop .craft-sitemap-quick a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+}
+
+body.craftelino-shop .craft-sitemap-quick a i {
+  width: 18px;
+  color: #1a3a5c;
+  text-align: center;
+}
+
+body.craftelino-shop .craft-sitemap-quick a:hover {
+  background: #f4f2ee;
+  color: #1a3a5c;
+}
+
+body.craftelino-shop .craft-sitemap-empty {
+  margin: 0;
+  color: #888;
+  font-size: 14px;
+}
+
+body.craftelino-shop #information-sitemap .breadcrumb {
+  display: none;
+}
+
+body.craftelino-shop #information-sitemap h1:not(.craft-sitemap-title) {
+  display: none;
+}

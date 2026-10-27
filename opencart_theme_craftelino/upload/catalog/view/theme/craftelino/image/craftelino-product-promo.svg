@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 140" width="900" height="140" role="img" aria-labelledby="t">
+  <title id="t">Craftelino  personalizare promoional</title>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a3a5c"/>
+      <stop offset="55%" style="stop-color:#122a42"/>
+      <stop offset="100%" style="stop-color:#1a3a5c"/>
+    </linearGradient>
+    <radialGradient id="hot" cx="85%" cy="20%" r="45%">
+      <stop offset="0%" style="stop-color:#e8a020;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#e8a020;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="140" rx="12" fill="url(#g)"/>
+  <rect width="900" height="140" rx="12" fill="url(#hot)"/>
+  <path d="M0 100 Q120 60 240 95 T480 88 T720 102 T900 85 V140 H0Z" fill="#e8a020" opacity="0.12"/>
+  <circle cx="720" cy="50" r="36" fill="none" stroke="#e8a020" stroke-width="3" opacity="0.5"/>
+  <circle cx="760" cy="85" r="18" fill="#e8a020" opacity="0.25"/>
+  <text x="40" y="52" fill="#fff" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5">PRODUSE PROMOIONALE</text>
+  <text x="40" y="82" fill="#8aaac4" font-family="Barlow, Segoe UI, sans-serif" font-size="14" font-weight="500">Logo gravat � broderie � serigrafie � seturi cadou corporate</text>
+  <g transform="translate(40 98)" fill="none" stroke="#e8a020" stroke-width="2" stroke-linecap="round">
+    <path d="M0 8h52"/>
+    <path d="M12 0v16M26 2v12M40 0v16"/>
+  </g>
+  <text x="110" y="112" fill="#e8a020" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-size="13" font-weight="700" letter-spacing="0.12em">CALITATE � TERMENE � SUPORT</text>
+</svg>

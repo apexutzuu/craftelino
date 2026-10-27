@@ -1,0 +1,26 @@
+CRAFTELINO — PACHET UPLOAD (OpenCart 4.1)
+==========================================
+
+CUM URCI PE SERVER (craftelino.ro)
+----------------------------------
+1. Conecteaza-te la FTP / File Manager (cPanel).
+2. Mergi la RADACINA site-ului OpenCart (acolo unde exista folderele catalog/ si image/).
+3. Copiaza continutul acestui folder "upload/" PESTE site (merge structura de foldere).
+   Exemplu: upload/catalog/...  ->  /public_html/craftelino.ro/catalog/...
+          upload/image/...     ->  /public_html/craftelino.ro/image/...
+
+NU folosi un zip vechi "catalog.zip" — foloseste fisierele din acest folder.
+
+DUPA UPLOAD
+-----------
+- Admin: System -> Settings -> Developer -> Clear cache
+- Browser: Ctrl+F5 pe homepage si pe Site Map
+
+VERIFICARE RAPIDA
+-----------------
+Homepage (cod sursa Ctrl+U): cauta "craft-cd-d" si "craft-hero-products"
+Site Map: cauta "craft-sitemap-page"
+CSS: link catre craftelino.css?v=... (numar versiune)
+
+Detalii complete: DEPLOY-ACUM.txt
+Documentatie: ../INSTALL.txt

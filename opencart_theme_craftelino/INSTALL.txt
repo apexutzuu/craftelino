@@ -1,0 +1,75 @@
+Tema „Craftelino” pentru OpenCart 4.1.0.3 (craftelino.ro)
+=====================================================
+
+La OpenCart 4.1, șabloanele catalogului active sunt în:
+  catalog/view/template/
+
+Fișierele CSS/JS ale temei stau în:
+  catalog/view/theme/craftelino/stylesheet/craftelino.css
+  catalog/view/theme/craftelino/javascript/craftelino.js
+
+`header.twig` încarcă fonturile Google + fișierele de mai sus.
+
+Pași pe hosting
+---------------
+
+1) Copiază pe server (păstrând structura):
+   upload/catalog/view/theme/craftelino/
+   → (rădăcina site)/catalog/view/theme/craftelino/
+   (stylesheet/, javascript/, template/ pentru backup sau copiere manuală.)
+
+2) Copiază șabloanele Twig în folderul real al catalogului:
+   din:   upload/catalog/view/theme/craftelino/template/common/*.twig
+         upload/catalog/view/theme/craftelino/template/product/thumb.twig
+         upload/catalog/view/template/product/product.twig  (pagina produs)
+   în:    catalog/view/template/common/
+         catalog/view/template/product/thumb.twig
+         catalog/view/template/product/product.twig
+
+2b) Actualizări PHP (față de OpenCart curat) pentru homepage și carduri:
+   - catalog/controller/common/home.php  (categorii + branduri pe home)
+   - catalog/controller/common/menu.php  (link „Bestsellers”)
+   - catalog/controller/common/header.php (linkuri special / producători)
+   - catalog/controller/product/thumb.php (nume producător, badge „NOU”)
+   - catalog/controller/product/product.php (link contact + texte ofertă)
+   Compară cu versiunile din proiectul tău sau aplică manual diferențele.
+
+2c) Fișiere de limbă (buton „Cerere ofertă” / bandă promo):
+   - catalog/language/en-gb/product/product.php
+   - catalog/language/fr-fr/product/product.php
+   (Copiază și pentru codul tău de limbă, ex. ro-ro, dacă există.)
+
+3) Catalog PDF: linkul din bara de sus indică `image/catalog/catalog.pdf`.
+   Încarcă fișierul la acea cale sau editează linkul din `header.twig`.
+
+4) Logo și favicon (SVG):
+   upload/image/catalog/craftelino-logo.svg
+   upload/image/catalog/craftelino-favicon.svg
+   → image/catalog/
+
+5) În admin (ex. https://craftelino.ro/admin1/):
+   System → Settings → magazin → Image:
+   - Logo: craftelino-logo.svg (sau PNG dacă nu merge SVG)
+   - Icon: craftelino-favicon.svg
+
+6) Imagini hero (countdown + colaj produse):
+   upload/image/catalog/hero/*.svg
+   → image/catalog/hero/
+
+7) Homepage actualizat (ZILE + poze) — OBLIGATORIU în ambele locuri:
+   - catalog/view/template/common/home.twig   (sablon activ OC 4.1)
+   - catalog/controller/common/home.php
+   - catalog/controller/common/header.php
+   - catalog/view/theme/craftelino/stylesheet/craftelino.css
+   - catalog/view/theme/craftelino/javascript/craftelino.js
+
+8) Golește cache (system/storage/cache/ sau Developer → Clear cache).
+   Reîncarcă site-ul cu Ctrl+F5.
+
+Vezi și: upload/DEPLOY-ACUM.txt (listă scurtă fișiere obligatorii).
+
+Notă: dacă ai mutat și CSS/JS în alt folder, deschide `header.twig` din `catalog/view/template/common/` și schimbă căile spre noile locații.
+
+Linkuri „Bestsellers”: în meniu linkul este setat din PHP; `craftelino.js` completează href pentru elementele cu **data-craft-special** care au încă `href="#"`.
+
+Admin redenumit în **admin1** nu afectează tema catalogului.

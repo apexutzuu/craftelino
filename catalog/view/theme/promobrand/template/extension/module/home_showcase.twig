@@ -1,0 +1,57 @@
+{% for section in sections %}
+<div style="margin-bottom:28px;">
+  <div class="section-header">
+    <div class="section-title">{{ section.heading }}</div>
+    {% if section.see_all_href %}
+    <a href="{{ section.see_all_href }}" class="see-all">{{ section.see_all_text }} <i class="ti ti-arrow-right"></i></a>
+    {% endif %}
+  </div>
+  <div class="prod-grid">
+    {% for product in section.products %}
+    <div class="prod-card">
+      <a href="{{ product.href }}" style="text-decoration:none;color:inherit;">
+        <div class="prod-img">
+          <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" style="max-width:80%;max-height:80%;object-fit:contain;" />
+          {% if product.discount_pct %}
+          <div class="prod-discount-badge">-{{ product.discount_pct }}%</div>
+          {% elseif product.is_new and not product.special %}
+          <div class="new-badge">{{ text_new }}</div>
+          {% elseif product.special %}
+          <div class="prod-discount-badge">{{ text_offer }}</div>
+          {% endif %}
+          <button type="button" class="wishlist-btn" onclick="event.preventDefault();event.stopPropagation();wishlist.add('{{ product.product_id }}');" title="{{ button_wishlist }}"><i class="ti ti-heart"></i></button>
+        </div>
+        <div class="prod-body">
+          {% if product.manufacturer %}
+          <div class="prod-brand">{{ product.manufacturer }}</div>
+          {% endif %}
+          <div class="prod-name">{{ product.name }}</div>
+          <div class="prod-prices">
+            {% if product.special %}
+            <span class="prod-price-new">{{ product.special }}</span>
+            <span class="prod-price-old">{{ product.price }}</span>
+            {% elseif product.price %}
+            <span class="prod-price-new">{{ product.price }}</span>
+            {% endif %}
+          </div>
+          {% if product.rating %}
+          <div style="margin-bottom:8px;">
+            {% for i in 1..5 %}
+            {% if product.rating < i %}
+            <i class="ti ti-star" style="color:#ddd;font-size:14px;"></i>
+            {% else %}
+            <i class="ti ti-star-filled" style="color:#e8a020;font-size:14px;"></i>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </a>
+      <div class="prod-body" style="padding-top:0;">
+        <button type="button" class="add-cart-btn" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i class="ti ti-shopping-cart"></i> {{ button_cart }}</button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}

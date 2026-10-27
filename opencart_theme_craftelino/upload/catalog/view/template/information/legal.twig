@@ -1,0 +1,20 @@
+{{ header }}
+<div id="information-legal" class="container craft-legal-page">
+  <nav class="craft-sitemap-breadcrumb" aria-label="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      {% if loop.last %}
+        <span class="craft-sitemap-breadcrumb-current">{{ breadcrumb.text }}</span>
+      {% else %}
+        <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      {% endif %}
+    {% endfor %}
+  </nav>
+  <article class="craft-legal-panel">
+    <h1 class="craft-legal-title">{{ heading_title }}</h1>
+    <div class="craft-legal-body">{{ description|raw }}</div>
+    <p class="craft-legal-back"><a href="{{ continue }}" class="craft-see-all"><i class="fa-solid fa-arrow-left"></i> Înapoi la magazin</a></p>
+  </article>
+  {{ content_top }}{{ content_bottom }}
+</div>
+{{ footer }}

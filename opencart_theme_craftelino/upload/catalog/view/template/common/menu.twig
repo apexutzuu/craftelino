@@ -1,0 +1,25 @@
+{% if categories %}
+  <div class="dropdown align-self-stretch craft-nav-dropdown">
+    <button type="button" class="craft-nav-all dropdown-toggle h-100 border-0 rounded-0" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false" aria-haspopup="true" id="craft-nav-all-btn"><i class="fa-solid fa-bars" aria-hidden="true"></i> Toate produsele</button>
+    <ul class="dropdown-menu shadow border-0 rounded-0 py-2 craft-nav-dropdown-menu" aria-labelledby="craft-nav-all-btn">
+      {% for category in categories %}
+        {% if category.children %}
+          <li><h6 class="dropdown-header text-uppercase">{{ category.name }}</h6></li>
+          {% for child in category.children %}
+            <li><a class="dropdown-item" href="{{ child.href }}">{{ child.name }}</a></li>
+          {% endfor %}
+          <li><a class="dropdown-item craft-nav-all-link" href="{{ category.href }}">{{ text_all }} {{ category.name }}</a></li>
+          <li><hr class="dropdown-divider my-1"/></li>
+        {% else %}
+          <li><a class="dropdown-item" href="{{ category.href }}">{{ category.name }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="craft-nav-links flex-grow-1">
+    <a href="{{ special }}" class="craft-hot">⭐ Bestsellers</a>
+    {% for category in categories|slice(0, 9) %}
+      <a href="{{ category.href }}">{{ category.name }}</a>
+    {% endfor %}
+  </div>
+{% endif %}

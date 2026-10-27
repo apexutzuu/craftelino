@@ -1,0 +1,64 @@
+LISTA FISIERE — upload/ (actualizat automat din proiect)
+=========================================================
+
+STRUCTURA PE SERVER (radacina OpenCart)
+---------------------------------------
+upload/catalog/   -> catalog/
+upload/image/     -> image/
+
+=== SABLOANE ACTIVE (OpenCart 4.1 citeste de aici) ===
+catalog/view/template/common/home.twig          Homepage + countdown ZILE + poze hero
+catalog/view/template/common/header.twig        Header Craftelino + cache CSS/JS
+catalog/view/template/common/footer.twig        Footer
+catalog/view/template/common/menu.twig          Meniu + dropdown "Toate produsele"
+catalog/view/template/common/cart.twig            Cos
+catalog/view/template/common/search.twig        Cautare
+catalog/view/template/information/sitemap.twig  Harta site (design nou)
+catalog/view/template/product/product.twig      Pagina produs
+catalog/view/template/product/thumb.twig        Card produs in liste
+catalog/view/template/product/related.twig      Produse similare
+
+=== CSS / JS TEMA ===
+catalog/view/theme/craftelino/stylesheet/craftelino.css
+catalog/view/theme/craftelino/javascript/craftelino.js
+
+=== PHP (date pentru sabloane) ===
+catalog/controller/common/home.php              Categorii, branduri, countdown, imagini hero
+catalog/controller/common/header.php            Cache-bust CSS, JSON-LD
+catalog/controller/common/menu.php              Link special / bestsellers
+catalog/controller/information/sitemap.php      Iconite categorii harta site
+catalog/controller/product/product.php          Pagina produs
+catalog/controller/product/thumb.php            Card produs (producator, badge)
+
+=== LIMBA (pagina produs) ===
+catalog/language/en-gb/product/product.php
+catalog/language/fr-fr/product/product.php
+
+=== IMAGINI (doar Craftelino — nu include demo/) ===
+image/catalog/craftelino-logo.svg
+image/catalog/craftelino-favicon.svg
+image/catalog/hero/hero-termos.svg
+image/catalog/hero/hero-tricou.svg
+image/catalog/hero/hero-agenda.svg
+image/catalog/hero/hero-pix.svg
+
+(Optional daca exista in pachet: craftelino-hero-timer.png)
+
+=== BACKUP SABLON (theme/craftelino/template/) ===
+catalog/view/theme/craftelino/template/...
+(copie identica; pe server conteaza mai ales catalog/view/template/)
+
+=== DUPA UPLOAD ===
+1. Clear cache (Admin -> Developer)
+2. Ctrl+F5
+3. Verifica: https://craftelino.ro/image/catalog/hero/hero-termos.svg
+
+=== DACA NU VEZI MODIFICARI ===
+- Ai urcat in catalog/view/theme/ dar NU in catalog/view/template/ ?
+- home.php sau sitemap.twig lipsesc pe server?
+- Cache OpenCart negoit?
+
+=== DACA "TOATE PRODUSELE" NU DESCHIDE MENIUL ===
+- Urca menu.twig + craftelino.css + craftelino.js (ultima versiune)
+- Clear cache + Ctrl+F5
+- Verifica ca bootstrap.js se incarca (view source, cauta bootstrap)

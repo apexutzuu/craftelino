@@ -1,0 +1,91 @@
+{{ header }}
+{% set hero_img_base = base ~ 'image/catalog/hero/' %}
+{% if hero_images is not defined %}
+  {% set hero_images = [
+    { src: hero_img_base ~ 'hero-termos.svg' },
+    { src: hero_img_base ~ 'hero-tricou.svg' },
+    { src: hero_img_base ~ 'hero-agenda.svg' },
+    { src: hero_img_base ~ 'hero-pix.svg' }
+  ] %}
+{% endif %}
+{% if hero_side_images is not defined %}
+  {% set hero_side_images = { side1: hero_img_base ~ 'hero-tricou.svg', side2: hero_img_base ~ 'hero-agenda.svg' } %}
+{% endif %}
+<section class="container craft-hero" aria-label="Ofertă">
+  <div class="craft-hero-main">
+    <div class="craft-hero-products" aria-hidden="true">
+      {% for img in hero_images %}
+        <img class="craft-hero-product craft-hero-product-{{ loop.index }}" src="{{ img.src }}" alt="" width="120" height="120" loading="lazy" decoding="async"/>
+      {% endfor %}
+    </div>
+    <div class="craft-hero-badge">⭐ Oferta lunii — produse promoționale</div>
+    <div class="craft-hero-title">Brandează-ți<br>afacerea <span>cu stil</span></div>
+    <p class="craft-hero-sub">Termosuri, agende, tricouri și pixuri personalizate cu logo-ul tău. Calitate premium, livrare rapidă.</p>
+    <a class="craft-hero-cta" data-craft-special href="{{ link_special }}">Comandă acum <i class="fa-solid fa-arrow-right"></i></a>
+    <div class="craft-countdown" data-campaign-end="{{ hero_campaign_end }}" aria-live="polite">
+      <div class="craft-cd-label">Ofertă expiră în</div>
+      <div class="craft-cd-digits">
+        <div class="craft-cd-box"><div class="craft-cd-num" id="craft-cd-d">{{ hero_cd_d }}</div><div class="craft-cd-unit">zile</div></div>
+        <div class="craft-cd-box"><div class="craft-cd-num" id="craft-cd-h">{{ hero_cd_h }}</div><div class="craft-cd-unit">ore</div></div>
+        <div class="craft-cd-box"><div class="craft-cd-num" id="craft-cd-m">{{ hero_cd_m }}</div><div class="craft-cd-unit">min</div></div>
+        <div class="craft-cd-box"><div class="craft-cd-num" id="craft-cd-s">{{ hero_cd_s }}</div><div class="craft-cd-unit">sec</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="craft-hero-side">
+    <a class="craft-side-banner craft-side-1" href="{{ link_special }}" style="--craft-side-img: url('{{ hero_side_images.side1 }}');">
+      <img class="craft-side-img" src="{{ hero_side_images.side1 }}" alt="" width="100" height="90" loading="lazy" decoding="async"/>
+      <div class="craft-sb-label">Textile brodate</div>
+      <div class="craft-sb-title">Tricouri &amp; hanorace logo</div>
+      <div class="craft-sb-discount">-40%</div>
+    </a>
+    <a class="craft-side-banner craft-side-2" href="{{ link_manufacturer }}" style="--craft-side-img: url('{{ hero_side_images.side2 }}');">
+      <img class="craft-side-img" src="{{ hero_side_images.side2 }}" alt="" width="100" height="90" loading="lazy" decoding="async"/>
+      <div class="craft-sb-label">Set cadou corporate</div>
+      <div class="craft-sb-title">Agendă + pix + termos</div>
+      <div class="craft-sb-discount">-25%</div>
+    </a>
+  </div>
+</section>
+
+<div class="craft-promo-strip">
+  <div class="container">
+    <div class="craft-promo-item"><i class="fa-solid fa-palette"></i><div><strong>Personalizare logo</strong><span>Print, broderie, gravură laser</span></div></div>
+    <div class="craft-promo-item"><i class="fa-solid fa-truck-fast"></i><div><strong>Livrare rapidă</strong><span>5–7 zile lucrătoare</span></div></div>
+    <div class="craft-promo-item"><i class="fa-solid fa-building"></i><div><strong>Tarife B2B</strong><span>Prețuri speciale la volum</span></div></div>
+    <div class="craft-promo-item"><i class="fa-solid fa-eye"></i><div><strong>Machetă gratuită</strong><span>Previzualizare înainte de producție</span></div></div>
+  </div>
+</div>
+
+{% if home_categories %}
+  <section class="container craft-section" aria-label="Categorii">
+    <div class="craft-section-header">
+      <div class="craft-section-title">Cumpără după categorie</div>
+      <a href="{{ link_sitemap }}" class="craft-see-all">Toate categoriile <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <div class="craft-cat-grid">
+      {% for cat in home_categories %}
+        <a class="craft-cat-card" href="{{ cat.href }}"><i class="fa-solid {{ cat.icon }} craft-cat-icon" aria-hidden="true"></i><div class="craft-cat-name">{{ cat.name }}</div></a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% if home_manufacturers %}
+  <section class="container craft-section" aria-label="Branduri">
+    <div class="craft-section-title" style="margin-bottom: 14px;">Branduri partenere</div>
+    <div class="craft-brand-bar">
+      {% for m in home_manufacturers %}
+        <a class="craft-brand-chip" href="{{ m.href }}">{{ m.name }}</a>
+      {% endfor %}
+      <a class="craft-brand-chip" href="{{ link_manufacturer }}">Toate</a>
+    </div>
+  </section>
+{% endif %}
+
+<div id="common-home" class="container">
+  <div class="row">{{ column_left }}
+    <div id="content" class="col">{{ content_top }}{{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

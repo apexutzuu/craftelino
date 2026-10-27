@@ -1,0 +1,10 @@
+{% if products %}
+  <section class="craft-module-products craft-related-products">
+    <h3 class="craft-section-title craft-section-title--module mb-3">{{ text_related }}</h3>
+    <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
+      {% for product in products %}
+        <div class="col">{{ product }}</div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

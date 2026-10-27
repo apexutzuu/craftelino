@@ -1,0 +1,38 @@
+{% for section in sections %}
+<div style="margin-bottom:30px;">
+  <div class="row">
+    <div class="col-sm-12" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;">{{ section.heading }}</h3>
+      {% if section.see_all_href %}
+      <a href="{{ section.see_all_href }}">{{ section.see_all_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="row">
+    {% for product in section.products %}
+    <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="product-thumb transition">
+        <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+        <div class="caption">
+          {% if product.manufacturer %}<p class="text-muted" style="text-transform:uppercase;font-size:11px;font-weight:700;">{{ product.manufacturer }}</p>{% endif %}
+          <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+          {% if product.price %}
+          <p class="price">
+            {% if not product.special %}
+            {{ product.price }}
+            {% else %}
+            <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+            {% endif %}
+          </p>
+          {% endif %}
+        </div>
+        <div class="button-group">
+          <button type="button" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}

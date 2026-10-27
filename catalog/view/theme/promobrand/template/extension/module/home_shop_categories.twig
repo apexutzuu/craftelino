@@ -1,0 +1,13 @@
+<div style="margin-bottom:28px;">
+  <div class="section-header">
+    <div class="section-title">{{ heading }}</div>
+    {% if see_all_href %}
+    <a href="{{ see_all_href }}" class="see-all">{{ see_all_text }} <i class="ti ti-arrow-right"></i></a>
+    {% endif %}
+  </div>
+  <div class="home-shop-cat-row">
+    {% for cat in categories %}
+    <a href="{{ cat.href }}" class="cat-card shop-cat-chip">{{ cat.name }}</a>
+    {% endfor %}
+  </div>
+</div>
