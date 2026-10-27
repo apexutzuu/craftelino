@@ -1,0 +1,95 @@
+{{ header }}
+<div id="information-contact" class="container craft-contact-page">
+  <nav class="craft-sitemap-breadcrumb" aria-label="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+      {% if loop.last %}
+        <span class="craft-sitemap-breadcrumb-current">{{ breadcrumb.text }}</span>
+      {% else %}
+        <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div class="row g-4">
+    <div class="col-lg-5">
+      <section class="craft-contact-card">
+        <h1 class="craft-contact-title">{{ heading_title }}</h1>
+        <h2 class="craft-contact-subtitle">{{ text_location }}</h2>
+        <div class="craft-contact-company">
+          {% if brand_name and brand_name != store %}
+            <p class="craft-contact-brand">{{ brand_name }}</p>
+          {% endif %}
+          <p class="craft-contact-company-name">{{ store }}</p>
+          <p><strong>CUI:</strong> {{ company_cui }}</p>
+          <p><strong>Reg. com.:</strong> {{ company_reg }}</p>
+          <p><strong>{{ text_address }}:</strong><br>{{ address }}</p>
+          {% if company_email %}
+            <p><strong>E-mail:</strong><br><a href="mailto:{{ company_email }}">{{ company_email }}</a></p>
+          {% endif %}
+          {% if geocode %}
+            <p class="mt-2">
+              <a href="https://maps.google.com/maps?q={{ geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" rel="noopener" class="craft-contact-map-btn"><i class="fa-solid fa-location-dot"></i> {{ button_map }}</a>
+            </p>
+          {% endif %}
+          {% if open %}
+            <p class="craft-contact-extra"><strong>{{ text_open }}</strong><br>{{ open }}</p>
+          {% endif %}
+          {% if comment %}
+            <p class="craft-contact-extra"><strong>{{ text_comment }}</strong><br>{{ comment }}</p>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+
+    <div class="col-lg-7">
+      {% if locations %}
+        <section class="craft-contact-card mb-4">
+          <h2 class="craft-contact-subtitle">{{ text_store }}</h2>
+          <div id="accordion" class="accordion">
+            {% for location in locations %}
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button type="button" class="accordion-button{% if not loop.first %} collapsed{% endif %}" data-bs-toggle="collapse" data-bs-target="#collapse-location-{{ location.location_id }}">{{ location.name }}</button>
+                </h2>
+                <div id="collapse-location-{{ location.location_id }}" class="accordion-collapse collapse{% if loop.first %} show{% endif %}" data-bs-parent="#accordion">
+                  <div class="accordion-body">
+                    <address class="mb-2">{{ location.address }}</address>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      <section class="craft-contact-card">
+        <h2 class="craft-contact-subtitle">{{ text_contact }}</h2>
+        <form id="form-contact" action="{{ send }}" method="post" data-oc-toggle="ajax">
+          <div class="mb-3 required">
+            <label for="input-name" class="form-label">{{ entry_name }}</label>
+            <input type="text" name="name" value="{{ name }}" id="input-name" class="form-control"/>
+            <div id="error-name" class="invalid-feedback"></div>
+          </div>
+          <div class="mb-3 required">
+            <label for="input-email" class="form-label">{{ entry_email }}</label>
+            <input type="email" name="email" value="{{ email }}" id="input-email" class="form-control"/>
+            <div id="error-email" class="invalid-feedback"></div>
+          </div>
+          <div class="mb-3 required">
+            <label for="input-enquiry" class="form-label">{{ entry_enquiry }}</label>
+            <textarea name="enquiry" rows="6" id="input-enquiry" class="form-control"></textarea>
+            <div id="error-enquiry" class="invalid-feedback"></div>
+          </div>
+          {{ captcha }}
+          <div class="text-end">
+            <button type="submit" class="craft-hero-cta border-0">{{ button_submit }}</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  {{ content_top }}{{ content_bottom }}
+</div>
+{{ footer }}
